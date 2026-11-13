@@ -7,7 +7,7 @@ body:
     id: code
     attributes:
       label: 你的 Muse 邀请码
-      placeholder: 例：4P14HY
+      placeholder: 例：JHB7ZS
     validations:
       required: true
   - type: input

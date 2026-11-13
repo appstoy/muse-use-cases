@@ -5,11 +5,11 @@
 > Meta 个人 AI 智能体 **Muse** 的真实高价值玩法合集。
 > 收录标准：**收录 X / Reddit / Instagram / Facebook / Threads 上的真实用户分享**，优先收录结果明确、有数字、可复制的案例。
 
-📊 **收录案例：341** ｜ 🕐 **最后更新：2026-11-13** ｜ 🤖 每日 0 点自动更新 ｜ 🌐 **在线预览站（支持中英双语）：https://jaxxchen003.github.io/muse-use-cases/**
+📊 **收录案例：341** ｜ 🕐 **最后更新：2026-11-13** ｜ 🔀 内容同步上游仓库 ｜ 🌐 **在线预览站（支持中英双语）：https://appstoy.github.io/muse-use-cases/**
 
 ---
 
-## 🎁 我的 Muse 邀请码：`4P14HY`
+## 🎁 我的 Muse 邀请码：`JHB7ZS`
 
 欢迎使用我的邀请码加入 Muse，一起玩转 AI 智能体！
 
@@ -17,6 +17,16 @@
 - 💻 **网页版**：muse.ai → 设置 → 通用 → 用量 → **兑换邀请码**
 - 📌 具体奖励金额与规则以邀请页面显示的条款为准（各账号可能不同）
 - 🤝 也有邀请码想分享？欢迎到 Issues 留言互助（有专门的分享模板）
+
+---
+
+## 🔀 关于本仓库
+
+本仓库是 [jaxxchen003/muse-use-cases](https://github.com/jaxxchen003/muse-use-cases) 的分支，由 **appstoy** 官方维护与部署，案例内容持续同步上游。
+
+- 代码：Apache License 2.0；案例内容：CC BY-NC-SA 4.0（须署名、非商业使用、相同方式共享）
+- 原始整理：[jaxxchen003](https://github.com/jaxxchen003)；原帖内容版权归原作者所有
+- 在线站点：https://appstoy.github.io/muse-use-cases/
 
 ---
 
@@ -2326,4 +2336,4 @@
 
 ---
 
-*Made with 💡 by [jaxxchen003](https://github.com/jaxxchen003) · PR / Issue 欢迎*
+*Maintained by [appstoy](https://github.com/appstoy) · 原始整理 [jaxxchen003](https://github.com/jaxxchen003) · PR / Issue 欢迎*

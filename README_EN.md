@@ -5,16 +5,26 @@
 > A curated collection of real, high-value ways people use **Muse**, Meta's personal AI agent.
 > Inclusion rule: **real user shares from X, Reddit, Instagram, Facebook, and Threads** — we prioritize cases with clear results, real numbers, and high replicability.
 
-📊 **341 cases** ｜ 🕐 **Last updated: 2026-11-13** ｜ 🤖 Auto-updated daily at 00:00 (Beijing time) ｜ 🌐 **Live site (Chinese/English): https://jaxxchen003.github.io/muse-use-cases/**
+📊 **341 cases** ｜ 🕐 **Last updated: 2026-11-13** ｜ 🔀 Content synced from upstream ｜ 🌐 **Live site (Chinese/English): https://appstoy.github.io/muse-use-cases/**
 
 ---
 
-## 🎁 My Muse invite code: `4P14HY`
+## 🎁 My Muse invite code: `JHB7ZS`
 
 - 📱 **Mobile app**: Muse App → Settings → **Redeem token** (available within 48 hours of joining)
 - 💻 **Web**: muse.ai → Settings → General → Usage → **Redeem invite code**
 - 📌 Rewards and terms are shown on the invitation screen and may vary by account
 - 🤝 Have your own code to share? Drop it in Issues — there's a template for that
+
+---
+
+## 🔀 About this repository
+
+This repository is a fork of [jaxxchen003/muse-use-cases](https://github.com/jaxxchen003/muse-use-cases), maintained and deployed by **appstoy**, with case content synced from upstream.
+
+- Code: Apache License 2.0; case content: CC BY-NC-SA 4.0 (attribution, non-commercial, share-alike)
+- Original compilation: [jaxxchen003](https://github.com/jaxxchen003); original posts remain the copyright of their authors
+- Live site: https://appstoy.github.io/muse-use-cases/
 
 ---
 
@@ -825,4 +835,4 @@ Auto-updated daily at 00:00 (Beijing time).
 
 ---
 
-*Made with 💡 by [jaxxchen003](https://github.com/jaxxchen003) · PRs / Issues welcome*
+*Maintained by [appstoy](https://github.com/appstoy) · Original compilation [jaxxchen003](https://github.com/jaxxchen003) · PRs / Issues welcome*
