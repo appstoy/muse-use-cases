@@ -147,6 +147,54 @@ video.card-media{background:#000;max-height:340px}
 .icode-foot{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#9aa1ac}
 .icode-foot a{color:var(--muted);text-decoration:none}
 .icode-foot a:hover{text-decoration:underline}
+/* owner (site owner) invite showcase */
+.owner-card{background:linear-gradient(135deg,#111418 0%,#2b3138 100%);color:#fff;border:none;
+  border-radius:24px;padding:26px 28px;margin:18px 0 10px;position:relative;overflow:hidden;
+  display:flex;align-items:center;gap:26px;flex-wrap:wrap;box-shadow:0 14px 40px rgba(17,20,24,.18)}
+.owner-card:before{content:"";position:absolute;top:-70px;right:-60px;width:230px;height:230px;
+  border-radius:50%;background:rgba(255,255,255,.07)}
+.owner-card-main{flex:1;min-width:240px;position:relative;z-index:1}
+.owner-card .owner-label{font-size:12px;font-weight:800;letter-spacing:1.6px;color:#9aa1ac;text-transform:uppercase}
+.owner-card .owner-code{font-family:ui-monospace,monospace;font-size:46px;font-weight:900;letter-spacing:5px;
+  cursor:pointer;line-height:1.15;margin:6px 0 4px;color:#fff}
+.owner-card .owner-intro{font-size:13px;color:#b9c0c9;max-width:520px}
+.owner-card-side{position:relative;z-index:1;display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.owner-card .btn-light{background:#fff;color:#111418;border:none;border-radius:999px;
+  padding:12px 26px;font-size:15px;font-weight:800;cursor:pointer;white-space:nowrap}
+.owner-card .btn-light:hover{opacity:.9}
+.owner-card .owner-hint{font-size:12px;color:#8d949e}
+@media(max-width:640px){.owner-card{padding:22px}.owner-card .owner-code{font-size:34px;letter-spacing:3px}}
+/* community codes list */
+.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:26px 0 4px}
+.section-head h3{font-size:17px;color:var(--ink);margin:0}
+.section-head .sub{font-size:13px;color:var(--muted);font-weight:400}
+.btn-sm{background:#fff;border:1px solid var(--line);color:var(--ink);border-radius:999px;
+  padding:9px 20px;font-size:13px;font-weight:700;cursor:pointer}
+.btn-sm:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.icode.random{animation:fadeIn .35s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+/* submit form */
+.submit-box{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 28px;margin:22px 0 8px}
+.submit-box h3{font-size:18px;color:var(--ink);margin:0 0 6px}
+.submit-box p.sub{font-size:13px;color:var(--muted);margin:0 0 18px}
+.submit-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.submit-grid{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+.field label{font-size:12px;font-weight:800;color:var(--ink)}
+.field label span{font-weight:400;color:var(--muted)}
+input.field-in,textarea.field-in{width:100%;border:1.5px solid var(--line);border-radius:12px;
+  padding:12px 14px;font-size:14px;font-family:inherit;background:#fbfcfd;color:var(--ink);box-sizing:border-box}
+input.field-in:focus,textarea.field-in:focus{outline:none;border-color:var(--ink);background:#fff}
+input.field-in.bad{border-color:#e5484d;background:#fff6f6}
+.submit-foot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:16px}
+.btn-submit{background:var(--ink);color:#fff;border:none;border-radius:999px;padding:13px 30px;
+  font-size:15px;font-weight:800;cursor:pointer}
+.btn-submit:hover{opacity:.88}
+.btn-submit:disabled{opacity:.5;cursor:not-allowed}
+.form-msg{font-size:13px;color:var(--muted)}
+.form-msg.err{color:#e5484d;font-weight:700}
+.form-msg.ok{color:#12a150;font-weight:700}
 footer{border-top:1px solid var(--line);padding:34px 0 60px;color:var(--muted);font-size:13px;background:#fff;margin-top:auto}
 footer .wrap{display:flex;flex-direction:column;gap:10px}
 body{min-height:100vh;display:flex;flex-direction:column}
@@ -221,7 +269,35 @@ body{min-height:100vh;display:flex;flex-direction:column}
       <p class="note" id="inviteNote"></p>
     </div>
     <div class="ad-slots" id="adSlots"></div>
+    <div id="ownerSlot"></div>
+    <div class="section-head">
+      <h3 id="communityTitle"></h3>
+      <span class="sub" id="communityNote"></span>
+      <button id="shuffleBtn" class="btn-sm"></button>
+    </div>
     <div id="inviteGrid" class="invite-grid"></div>
+    <div class="submit-box" id="submitBox">
+      <h3 id="submitTitle"></h3>
+      <p class="sub" id="submitDesc"></p>
+      <div class="submit-grid">
+        <div class="field">
+          <label id="fCodeLabel"></label>
+          <input class="field-in" id="fCode" maxlength="12" autocomplete="off" spellcheck="false">
+        </div>
+        <div class="field">
+          <label id="fTotalLabel"></label>
+          <input class="field-in" id="fTotal" inputmode="numeric" maxlength="3" autocomplete="off">
+        </div>
+        <div class="field full">
+          <label id="fIntroLabel"></label>
+          <input class="field-in" id="fIntro" maxlength="80" autocomplete="off">
+        </div>
+      </div>
+      <div class="submit-foot">
+        <button id="submitBtn" class="btn-submit"></button>
+        <span class="form-msg" id="formMsg"></span>
+      </div>
+    </div>
   </section>
 </div>
 
@@ -238,6 +314,9 @@ let DATA = null, activeCat = "all", activeView = "cases";
 let lang = localStorage.getItem("muse-lang") || "zh";
 const LANGS = [["zh","中文"],["en","English"],["ja","日本語"],["ko","한국어"],["th","ไทย"],["vi","Tiếng Việt"],["id","Bahasa Indonesia"],["de","Deutsch"],["fr","Français"],["es","Español"],["pt","Português"]];
 let inviteLoaded = false;
+const OWNER_CODE = "JHB7ZS";
+const RANDOM_COUNT = 9;   /* how many community codes to show per shuffle */
+let sampleCodes = [];      /* codes currently on screen */
 let sortMode = "new", onlyX = false, shown = 24, lastQ = "", inviteLeftOnly = false;
 
 const STR = {
@@ -271,8 +350,24 @@ const STR = {
     inviteLeftOnly: "仅看有剩余", inviteAll: "显示全部",
     adSlot: "广告位招租", adPrice: "$39 / 月", adCta: "成为赞助商 ↗",
     inviteCount: n => `共 ${n} 个邀请码`,
-    catNames: { money: "省钱 · 账单 · 索赔", travel: "出行 · 旅行", shopping: "购物", productivity: "效率 · 自动化", content: "内容 · 创作", dev: "开发 · 建站", business: "生意 · 维权" }
-  },
+    communityTitle: "🎲 社区邀请码（随机展示）", shuffle: "换一批 ↻",
+    ownerLabel: "站长邀请码 · OFFICIAL",
+    submitTitle: "＋ 上传我的邀请码",
+    fCodeLabel: "你的 Muse 邀请码 *",
+    fTotalLabel: "邀请码总名额 <span>（可不填）</span>",
+    fIntroLabel: "一句话介绍 <span>（可不填）</span>",
+    submitBtn: "提交邀请码",
+    submitBad: "邀请码格式不对，请输入 4–12 位字母或数字。",
+    communityEmpty: "社区还没人上传邀请码，你可以做第一个 👆",
+    fCodePh: "例：JHB7ZS（4–12 位字母或数字）", fTotalPh: "例：10", fIntroPh: "例：独立开发者，Muse 重度用户，欢迎交流玩法",
+    submitBusy: "正在提交…",
+    communityEmpty: "社区还没人上传邀请码，你可以做第一个 👆",
+    randomNote: n => "从社区邀请码中随机展示 {n} 个".replace("{n}", n),
+    submitDesc: "填好提交即可，会在开源仓库自动开一个投稿 Issue，审核后展示在页面上。",
+    submitOk: "提交成功，已跳转到仓库 🎉 记得点绿色的 Submit new issue 完成上传。",
+    submitFail: "提交失败，请稍后重试，或直接去 Issues 提交。",
+    submitHint: "提交后会跳到 GitHub 投稿页，点一下绿色按钮就上传好了。",
+    catNames: { money: "省钱 · 账单 · 索赔", travel: "出行 · 旅行", shopping: "购物", productivity: "效率 · 自动化", content: "内容 · 创作", dev: "开发 · 建站", business: "生意 · 维权" }  },
   en: {
     logoSub: "Updated daily",
     searchPh: "Search cases, authors, keywords… (e.g. insurance, refund, AT&T)",
@@ -303,8 +398,24 @@ const STR = {
     inviteLeftOnly: "With remaining only", inviteAll: "Show all",
     adSlot: "Ad space available", adPrice: "$39 / month", adCta: "Become a sponsor ↗",
     inviteCount: n => `${n} invite codes`,
-    catNames: { money: "Money saving", travel: "Travel", shopping: "Shopping", productivity: "Productivity", content: "Content", dev: "Dev", business: "Business" }
-  },
+    communityTitle: "🎲 Community codes (random)", shuffle: "Shuffle ↻",
+    ownerLabel: "OWNER CODE · OFFICIAL",
+    submitTitle: "+ Upload my invite code",
+    fCodeLabel: "Your Muse invite code *",
+    fTotalLabel: "Total seats <span>(optional)</span>",
+    fIntroLabel: "One-line intro <span>(optional)</span>",
+    submitBtn: "Submit invite code",
+    submitBad: "Invalid code — use 4–12 letters or digits.",
+    communityEmpty: "No community codes yet — be the first 👆",
+    fCodePh: "e.g. JHB7ZS (4–12 letters or digits)", fTotalPh: "e.g. 10", fIntroPh: "e.g. Indie dev, heavy Muse user, happy to swap tips",
+    submitBusy: "Submitting…",
+    communityEmpty: "No community codes yet — be the first 👆",
+    randomNote: n => "Showing {n} random community codes".replace("{n}", n),
+    submitDesc: "Fill this in and submit — a submission issue opens automatically on the open-source repo, and your code appears here once reviewed.",
+    submitOk: "Submitted — redirecting to the repo. Tap the green Submit new issue button to finish.",
+    submitFail: "Submission failed. Try again later, or post it in Issues directly.",
+    submitHint: "You will be sent to GitHub; one green button and it is uploaded.",
+    catNames: { money: "Money saving", travel: "Travel", shopping: "Shopping", productivity: "Productivity", content: "Content", dev: "Dev", business: "Business" }  },
   ja: {
     logoSub: "毎日更新",
     searchPh: "ケース・作者・キーワードを検索…（例：保険、返金、AT&T）",
@@ -335,8 +446,24 @@ const STR = {
     inviteLeftOnly: "残りありのみ", inviteAll: "すべて表示",
     adSlot: "広告枠募集中", adPrice: "$39 / 月", adCta: "スポンサーになる ↗",
     inviteCount: n => `招待コード ${n} 件`,
-    catNames: { money: "節約・請求・返金", travel: "旅行", shopping: "買い物", productivity: "効率化・自動化", content: "コンテンツ・創作", dev: "開発・サイト構築", business: "ビジネス・権利保護" }
-  },
+    communityTitle: "🎲 コミュニティ招待コード（ランダム表示）", shuffle: "シャッフル ↻",
+    ownerLabel: "管理者コード · OFFICIAL",
+    submitTitle: "+ 招待コードをアップロード",
+    fCodeLabel: "あなたの Muse 招待コード *",
+    fTotalLabel: "招待枠の総数 <span>（任意）</span>",
+    fIntroLabel: "ひとこと紹介 <span>（任意）</span>",
+    submitBtn: "招待コードを送信",
+    submitBad: "形式が正しくありません（英数字 4〜12 文字）。",
+    communityEmpty: "まだコミュニティのコードがありません。最初の一人になりましょう 👆",
+    fCodePh: "例：JHB7ZS（英数字 4〜12 文字）", fTotalPh: "例：10", fIntroPh: "例：個人開発者。Muse ヘビーユーザーです",
+    submitBusy: "送信中…",
+    communityEmpty: "まだコミュニティのコードがありません。最初の一人になりましょう 👆",
+    randomNote: n => "コミュニティコードから {n} 件をランダム表示".replace("{n}", n),
+    submitDesc: "入力して送信すると、リポジトリに投稿 Issue が自動作成され、確認後にページへ掲載されます。",
+    submitOk: "送信しました。リポジトリへ移動するので緑のボタンで完了です。",
+    submitFail: "送信に失敗しました。後で再試行するか Issues から投稿してください。",
+    submitHint: "GitHub の投稿ページに移動します。緑のボタンを押せば完了です。",
+    catNames: { money: "節約・請求・返金", travel: "旅行", shopping: "買い物", productivity: "効率化・自動化", content: "コンテンツ・創作", dev: "開発・サイト構築", business: "ビジネス・権利保護" }  },
   ko: {
     logoSub: "매일 업데이트",
     searchPh: "사례, 작성자, 키워드 검색… (예: 보험, 환불, AT&T)",
@@ -367,8 +494,24 @@ const STR = {
     inviteLeftOnly: "남은 코드만 보기", inviteAll: "모두 보기",
     adSlot: "광고 자리 모집 중", adPrice: "$39 / 월", adCta: "후원하기 ↗",
     inviteCount: n => `초대 코드 ${n}개`,
-    catNames: { money: "절약·요금·클레임", travel: "여행", shopping: "쇼핑", productivity: "효율·자동화", content: "콘텐츠·창작", dev: "개발·사이트 구축", business: "비즈니스·권리 보호" }
-  },
+    communityTitle: "🎲 커뮤니티 초대 코드 (무작위)", shuffle: "새로고침 ↻",
+    ownerLabel: "운영자 코드 · OFFICIAL",
+    submitTitle: "+ 내 초대 코드 업로드",
+    fCodeLabel: "내 Muse 초대 코드 *",
+    fTotalLabel: "초대 정원 <span>(선택)</span>",
+    fIntroLabel: "한 줄 소개 <span>(선택)</span>",
+    submitBtn: "초대 코드 제출",
+    submitBad: "형식이 올바르지 않습니다 (영문/숫자 4–12자).",
+    communityEmpty: "아직 커뮤니티 코드가 없습니다. 첫 번째가 되어 보세요 👆",
+    fCodePh: "예: JHB7ZS (영문/숫자 4–12자)", fTotalPh: "예: 10", fIntroPh: "예: 인디 개발자, Muse 헤비 유저",
+    submitBusy: "제출 중…",
+    communityEmpty: "아직 커뮤니티 코드가 없습니다. 첫 번째가 되어 보세요 👆",
+    randomNote: n => "커뮤니티 코드 중 {n}개 무작위 표시".replace("{n}", n),
+    submitDesc: "작성 후 제출하면 오픈소스 저장소에 투고 Issue가 자동 생성되고, 확인 후 페이지에 표시됩니다.",
+    submitOk: "제출 완료. 저장소로 이동하니 초록 버튼을 누르면 끝납니다.",
+    submitFail: "제출 실패. 잠시 후 다시 시도하거나 Issues에 직접 올려 주세요.",
+    submitHint: "GitHub 제출 페이지로 이동합니다. 초록 버튼 한 번이면 업로드됩니다.",
+    catNames: { money: "절약·요금·클레임", travel: "여행", shopping: "쇼핑", productivity: "효율·자동화", content: "콘텐츠·창작", dev: "개발·사이트 구축", business: "비즈니스·권리 보호" }  },
   th: {
     logoSub: "อัปเดตทุกวัน",
     searchPh: "ค้นหาเคส ผู้เขียน คีย์เวิร์ด… (เช่น ประกัน คืนเงิน AT&T)",
@@ -399,8 +542,24 @@ const STR = {
     inviteLeftOnly: "เฉพาะที่ยังเหลือ", inviteAll: "แสดงทั้งหมด",
     adSlot: "เปิดรับผู้ลงโฆษณา", adPrice: "$39 / เดือน", adCta: "เป็นผู้สนับสนุน ↗",
     inviteCount: n => `รหัสเชิญ ${n} รหัส`,
-    catNames: { money: "ประหยัด·บิล·เคลม", travel: "ท่องเที่ยว", shopping: "ช้อปปิ้ง", productivity: "ประสิทธิภาพ·อัตโนมัติ", content: "คอนเทนต์·สร้างสรรค์", dev: "พัฒนา·สร้างเว็บ", business: "ธุรกิจ·เรียกร้องสิทธิ์" }
-  },
+    communityTitle: "🎲 รหัสเชิญจากชุมชน (สุ่มแสดง)", shuffle: "สุ่มใหม่ ↻",
+    ownerLabel: "รหัสเจ้าของเว็บ · OFFICIAL",
+    submitTitle: "+ อัปโหลดรหัสเชิญของฉัน",
+    fCodeLabel: "รหัสเชิญ Muse ของคุณ *",
+    fTotalLabel: "จำนวนสิทธิ์ทั้งหมด <span>(ไม่บังคับ)</span>",
+    fIntroLabel: "แนะนำตัวสั้น ๆ <span>(ไม่บังคับ)</span>",
+    submitBtn: "ส่งรหัสเชิญ",
+    submitBad: "รูปแบบไม่ถูกต้อง ใช้ตัวอักษร/ตัวเลข 4–12 ตัว",
+    communityEmpty: "ยังไม่มีรหัสจากชุมชน มาเป็นคนแรกกัน 👆",
+    fCodePh: "เช่น JHB7ZS (ตัวอักษร/ตัวเลข 4–12 ตัว)", fTotalPh: "เช่น 10", fIntroPh: "เช่น นักพัฒนาอิสระ ใช้ Muse เป็นประจำ",
+    submitBusy: "กำลังส่ง…",
+    communityEmpty: "ยังไม่มีรหัสจากชุมชน มาเป็นคนแรกกัน 👆",
+    randomNote: n => "สุ่มแสดง {n} รหัสจากชุมชน".replace("{n}", n),
+    submitDesc: "กรอกแล้วกดส่ง ระบบจะเปิด Issue ในรีโปให้อัตโนมัติ และจะแสดงบนหน้าเว็บหลังตรวจสอบ",
+    submitOk: "ส่งแล้ว กำลังพาไปที่รีโป กดปุ่มสีเขียวเพื่อเสร็จสิ้น",
+    submitFail: "ส่งไม่สำเร็จ ลองใหม่ภายหลัง หรือโพสต์ใน Issues โดยตรง",
+    submitHint: "ระบบจะพาไปหน้าโพสต์ของ GitHub กดปุ่มสีเขียวครั้งเดียวก็เสร็จ",
+    catNames: { money: "ประหยัด·บิล·เคลม", travel: "ท่องเที่ยว", shopping: "ช้อปปิ้ง", productivity: "ประสิทธิภาพ·อัตโนมัติ", content: "คอนเทนต์·สร้างสรรค์", dev: "พัฒนา·สร้างเว็บ", business: "ธุรกิจ·เรียกร้องสิทธิ์" }  },
   vi: {
     logoSub: "Cập nhật hằng ngày",
     searchPh: "Tìm case, tác giả, từ khóa… (vd: bảo hiểm, hoàn tiền, AT&T)",
@@ -431,8 +590,24 @@ const STR = {
     inviteLeftOnly: "Chỉ mã còn lượt", inviteAll: "Hiện tất cả",
     adSlot: "Đang nhận đặt quảng cáo", adPrice: "$39 / tháng", adCta: "Trở thành nhà tài trợ ↗",
     inviteCount: n => `${n} mã mời`,
-    catNames: { money: "Tiết kiệm·hóa đơn·khiếu nại", travel: "Du lịch", shopping: "Mua sắm", productivity: "Hiệu suất·tự động hóa", content: "Nội dung·sáng tạo", dev: "Phát triển·xây web", business: "Kinh doanh·bảo vệ quyền lợi" }
-  },
+    communityTitle: "🎲 Mã mời cộng đồng (hiển thị ngẫu nhiên)", shuffle: "Đổi lượt ↻",
+    ownerLabel: "MÃ CHỦ TRANG · OFFICIAL",
+    submitTitle: "+ Tải lên mã mời của tôi",
+    fCodeLabel: "Mã mời Muse của bạn *",
+    fTotalLabel: "Tổng số suất <span>(không bắt buộc)</span>",
+    fIntroLabel: "Giới thiệu một dòng <span>(không bắt buộc)</span>",
+    submitBtn: "Gửi mã mời",
+    submitBad: "Mã không hợp lệ — cần 4–12 chữ hoặc số.",
+    communityEmpty: "Chưa có mã nào từ cộng đồng — hãy là người đầu tiên 👆",
+    fCodePh: "VD: JHB7ZS (4–12 chữ hoặc số)", fTotalPh: "VD: 10", fIntroPh: "VD: Dev độc lập, dùng Muse thường xuyên",
+    submitBusy: "Đang gửi…",
+    communityEmpty: "Chưa có mã nào từ cộng đồng — hãy là người đầu tiên 👆",
+    randomNote: n => "Hiển thị ngẫu nhiên {n} mã cộng đồng".replace("{n}", n),
+    submitDesc: "Điền và gửi — hệ thống tự mở một Issue trên repo mã nguồn mở, mã sẽ hiển thị sau khi được duyệt.",
+    submitOk: "Đã gửi — đang chuyển tới repo, bấm nút xanh là xong.",
+    submitFail: "Gửi thất bại. Thử lại sau hoặc đăng trực tiếp trong Issues.",
+    submitHint: "Bạn sẽ được chuyển tới trang đăng bài trên GitHub, bấm nút xanh là hoàn tất.",
+    catNames: { money: "Tiết kiệm·hóa đơn·khiếu nại", travel: "Du lịch", shopping: "Mua sắm", productivity: "Hiệu suất·tự động hóa", content: "Nội dung·sáng tạo", dev: "Phát triển·xây web", business: "Kinh doanh·bảo vệ quyền lợi" }  },
   id: {
     logoSub: "Diperbarui harian",
     searchPh: "Cari kasus, penulis, kata kunci… (mis: asuransi, refund, AT&T)",
@@ -463,8 +638,24 @@ const STR = {
     inviteLeftOnly: "Hanya yang masih tersisa", inviteAll: "Tampilkan semua",
     adSlot: "Slot iklan tersedia", adPrice: "$39 / bulan", adCta: "Jadi sponsor ↗",
     inviteCount: n => `${n} kode undangan`,
-    catNames: { money: "Hemat·tagihan·klaim", travel: "Travel", shopping: "Belanja", productivity: "Produktivitas·otomasi", content: "Konten·kreasi", dev: "Dev·membangun web", business: "Bisnis·klaim hak" }
-  },
+    communityTitle: "🎲 Kode komunitas (acak)", shuffle: "Acak ulang ↻",
+    ownerLabel: "KODE PEMILIK · OFFICIAL",
+    submitTitle: "+ Unggah kode undanganku",
+    fCodeLabel: "Kode undangan Muse kamu *",
+    fTotalLabel: "Total kuota <span>(opsional)</span>",
+    fIntroLabel: "Perkenalan singkat <span>(opsional)</span>",
+    submitBtn: "Kirim kode undangan",
+    submitBad: "Kode tidak valid — pakai 4–12 huruf atau angka.",
+    communityEmpty: "Belum ada kode komunitas — jadilah yang pertama 👆",
+    fCodePh: "mis. JHB7ZS (4–12 huruf/angka)", fTotalPh: "mis. 10", fIntroPh: "mis. Developer indie, pengguna Muse harian",
+    submitBusy: "Mengirim…",
+    communityEmpty: "Belum ada kode komunitas — jadilah yang pertama 👆",
+    randomNote: n => "Menampilkan {n} kode komunitas acak".replace("{n}", n),
+    submitDesc: "Isi lalu kirim — sistem otomatis membuka Issue di repo open-source, kode tampil setelah ditinjau.",
+    submitOk: "Terkirim — mengarahkan ke repo, tekan tombol hijau untuk selesai.",
+    submitFail: "Gagal mengirim. Coba lagi nanti atau posting langsung di Issues.",
+    submitHint: "Kamu akan diarahkan ke halaman posting GitHub; satu tombol hijau selesai.",
+    catNames: { money: "Hemat·tagihan·klaim", travel: "Travel", shopping: "Belanja", productivity: "Produktivitas·otomasi", content: "Konten·kreasi", dev: "Dev·membangun web", business: "Bisnis·klaim hak" }  },
   de: {
     logoSub: "Täglich aktualisiert",
     searchPh: "Fälle, Autoren, Stichwörter suchen… (z. B. Versicherung, Erstattung, AT&T)",
@@ -495,8 +686,24 @@ const STR = {
     inviteLeftOnly: "Nur mit Restplätzen", inviteAll: "Alle anzeigen",
     adSlot: "Werbeplatz frei", adPrice: "$39 / Monat", adCta: "Sponsor werden ↗",
     inviteCount: n => `${n} Einladungscodes`,
-    catNames: { money: "Sparen·Rechnungen·Forderungen", travel: "Reisen", shopping: "Einkaufen", productivity: "Produktivität·Automatisierung", content: "Inhalte·Kreation", dev: "Entwicklung·Websites", business: "Geschäft·Rechtsdurchsetzung" }
-  },
+    communityTitle: "🎲 Community-Codes (zufällig)", shuffle: "Neu mischen ↻",
+    ownerLabel: "BETREIBER-CODE · OFFICIAL",
+    submitTitle: "+ Meinen Einladungscode hochladen",
+    fCodeLabel: "Dein Muse-Einladungscode *",
+    fTotalLabel: "Gesamtplätze <span>(optional)</span>",
+    fIntroLabel: "Einzeiler zu dir <span>(optional)</span>",
+    submitBtn: "Einladungscode senden",
+    submitBad: "Ungültiges Format — 4–12 Buchstaben oder Ziffern.",
+    communityEmpty: "Noch keine Community-Codes – sei der Erste 👆",
+    fCodePh: "z. B. JHB7ZS (4–12 Buchstaben/Ziffern)", fTotalPh: "z. B. 10", fIntroPh: "z. B. Indie-Dev, intensiver Muse-Nutzer",
+    submitBusy: "Wird gesendet…",
+    communityEmpty: "Noch keine Community-Codes – sei der Erste 👆",
+    randomNote: n => "{n} zufällige Community-Codes".replace("{n}", n),
+    submitDesc: "Ausfüllen und absenden — es wird automatisch ein Issue im Open-Source-Repo erstellt; nach Prüfung erscheint der Code hier.",
+    submitOk: "Gesendet — Weiterleitung zum Repo, grüner Button genügt.",
+    submitFail: "Senden fehlgeschlagen. Später erneut versuchen oder direkt in den Issues posten.",
+    submitHint: "Du wirst zu GitHub weitergeleitet; ein grüner Button und fertig.",
+    catNames: { money: "Sparen·Rechnungen·Forderungen", travel: "Reisen", shopping: "Einkaufen", productivity: "Produktivität·Automatisierung", content: "Inhalte·Kreation", dev: "Entwicklung·Websites", business: "Geschäft·Rechtsdurchsetzung" }  },
   fr: {
     logoSub: "Mis à jour quotidiennement",
     searchPh: "Rechercher cas, auteurs, mots-clés… (ex. : assurance, remboursement, AT&T)",
@@ -527,8 +734,24 @@ const STR = {
     inviteLeftOnly: "Avec places restantes uniquement", inviteAll: "Tout afficher",
     adSlot: "Espace publicitaire disponible", adPrice: "39 $ / mois", adCta: "Devenir sponsor ↗",
     inviteCount: n => `${n} codes d'invitation`,
-    catNames: { money: "Économies·factures·réclamations", travel: "Voyage", shopping: "Achats", productivity: "Productivité·automatisation", content: "Contenu·création", dev: "Dév·sites web", business: "Business·recours" }
-  },
+    communityTitle: "🎲 Codes de la communauté (aléatoire)", shuffle: "Mélanger ↻",
+    ownerLabel: "CODE DU SITE · OFFICIAL",
+    submitTitle: "+ Envoyer mon code d’invitation",
+    fCodeLabel: "Votre code d’invitation Muse *",
+    fTotalLabel: "Places totales <span>(facultatif)</span>",
+    fIntroLabel: "Présentation en une ligne <span>(facultatif)</span>",
+    submitBtn: "Envoyer le code",
+    submitBad: "Format invalide — 4 à 12 lettres ou chiffres.",
+    communityEmpty: "Aucun code communautaire pour l’instant — soyez le premier 👆",
+    fCodePh: "ex. JHB7ZS (4–12 lettres/chiffres)", fTotalPh: "ex. 10", fIntroPh: "ex. Dev indépendant, utilisateur intensif de Muse",
+    submitBusy: "Envoi…",
+    communityEmpty: "Aucun code communautaire pour l’instant — soyez le premier 👆",
+    randomNote: n => "{n} codes communautaires au hasard".replace("{n}", n),
+    submitDesc: "Remplissez puis validez — une Issue est ouverte automatiquement sur le dépôt open source ; le code apparaît après validation.",
+    submitOk: "Envoyé — redirection vers le dépôt, un bouton vert et c’est fait.",
+    submitFail: "Échec de l’envoi. Réessayez plus tard ou publiez directement dans les Issues.",
+    submitHint: "Vous serez redirigé vers la page de publication GitHub ; un bouton vert suffit.",
+    catNames: { money: "Économies·factures·réclamations", travel: "Voyage", shopping: "Achats", productivity: "Productivité·automatisation", content: "Contenu·création", dev: "Dév·sites web", business: "Business·recours" }  },
   es: {
     logoSub: "Actualizado a diario",
     searchPh: "Buscar casos, autores, palabras clave… (ej.: seguro, reembolso, AT&T)",
@@ -559,8 +782,24 @@ const STR = {
     inviteLeftOnly: "Solo con plazas restantes", inviteAll: "Mostrar todo",
     adSlot: "Espacio publicitario disponible", adPrice: "$39 / mes", adCta: "Ser patrocinador ↗",
     inviteCount: n => `${n} códigos de invitación`,
-    catNames: { money: "Ahorro·facturas·reclamos", travel: "Viajes", shopping: "Compras", productivity: "Productividad·automatización", content: "Contenido·creación", dev: "Desarrollo·webs", business: "Negocios·reclamaciones" }
-  },
+    communityTitle: "🎲 Códigos de la comunidad (aleatorio)", shuffle: "Barajar ↻",
+    ownerLabel: "CÓDIGO DEL SITIO · OFFICIAL",
+    submitTitle: "+ Subir mi código de invitación",
+    fCodeLabel: "Tu código de invitación de Muse *",
+    fTotalLabel: "Plazas totales <span>(opcional)</span>",
+    fIntroLabel: "Presentación en una línea <span>(opcional)</span>",
+    submitBtn: "Enviar código",
+    submitBad: "Formato no válido: 4–12 letras o números.",
+    communityEmpty: "Aún no hay códigos de la comunidad: ¡sé el primero 👆",
+    fCodePh: "p. ej. JHB7ZS (4–12 letras o números)", fTotalPh: "p. ej. 10", fIntroPh: "p. ej. Dev independiente, usuario intensivo de Muse",
+    submitBusy: "Enviando…",
+    communityEmpty: "Aún no hay códigos de la comunidad: ¡sé el primero 👆",
+    randomNote: n => "Mostrando {n} códigos aleatorios".replace("{n}", n),
+    submitDesc: "Rellena y envía: se abre un Issue automáticamente en el repositorio open source y el código aparece tras revisarse.",
+    submitOk: "Enviado — te llevamos al repositorio: un botón verde y listo.",
+    submitFail: "No se pudo enviar. Inténtalo más tarde o publícalo en Issues.",
+    submitHint: "Te llevaremos a la página de publicación de GitHub; con un botón verde basta.",
+    catNames: { money: "Ahorro·facturas·reclamos", travel: "Viajes", shopping: "Compras", productivity: "Productividad·automatización", content: "Contenido·creación", dev: "Desarrollo·webs", business: "Negocios·reclamaciones" }  },
   pt: {
     logoSub: "Atualizado diariamente",
     searchPh: "Pesquisar casos, autores, palavras-chave… (ex.: seguro, reembolso, AT&T)",
@@ -591,8 +830,24 @@ const STR = {
     inviteLeftOnly: "Só com vagas restantes", inviteAll: "Mostrar tudo",
     adSlot: "Espaço publicitário disponível", adPrice: "US$ 39 / mês", adCta: "Seja patrocinador ↗",
     inviteCount: n => `${n} códigos de convite`,
-    catNames: { money: "Economia·contas·reembolsos", travel: "Viagem", shopping: "Compras", productivity: "Produtividade·automação", content: "Conteúdo·criação", dev: "Desenvolvimento·sites", business: "Negócios·reivindicações" }
-  },
+    communityTitle: "🎲 Códigos da comunidade (aleatório)", shuffle: "Embaralhar ↻",
+    ownerLabel: "CÓDIGO DO SITE · OFFICIAL",
+    submitTitle: "+ Enviar meu código de convite",
+    fCodeLabel: "Seu código de convite do Muse *",
+    fTotalLabel: "Vagas totais <span>(opcional)</span>",
+    fIntroLabel: "Apresentação em uma linha <span>(opcional)</span>",
+    submitBtn: "Enviar código",
+    submitBad: "Formato inválido — 4 a 12 letras ou números.",
+    communityEmpty: "Ainda não há códigos da comunidade — seja o primeiro 👆",
+    fCodePh: "ex. JHB7ZS (4–12 letras ou números)", fTotalPh: "ex. 10", fIntroPh: "ex. Dev independente, usuário intenso do Muse",
+    submitBusy: "Enviando…",
+    communityEmpty: "Ainda não há códigos da comunidade — seja o primeiro 👆",
+    randomNote: n => "Exibindo {n} códigos aleatórios".replace("{n}", n),
+    submitDesc: "Preencha e envie — abre automaticamente uma Issue no repositório open source; o código aparece após revisão.",
+    submitOk: "Enviado — redirecionando ao repositório, um botão verde e pronto.",
+    submitFail: "Falha no envio. Tente mais tarde ou publique direto nas Issues.",
+    submitHint: "Você será levado à página de publicação do GitHub; um botão verde resolve.",
+    catNames: { money: "Economia·contas·reembolsos", travel: "Viagem", shopping: "Compras", productivity: "Produtividade·automação", content: "Conteúdo·criação", dev: "Desenvolvimento·sites", business: "Negócios·reivindicações" }  },
 };
 Object.keys(STR).forEach(l => { STR[l] = { ...STR.en, ...STR[l] }; });
 const T = () => STR[lang] || STR.en;
@@ -642,10 +897,11 @@ function applyLang(){
   if (!sel.options.length) LANGS.forEach(([v, l]) => {
     const o = document.createElement("option"); o.value = v; o.textContent = l; sel.appendChild(o); });
   sel.value = lang;
+  renderSubmitForm();
   renderAds();
   localStorage.setItem("muse-lang", lang);
   if (DATA) renderAll();
-  if (inviteLoaded) renderInvites();
+  if (inviteLoaded) renderInvites(true);
 }
 
 /* ---------- cases view ---------- */
@@ -721,7 +977,9 @@ function render(){
 
 /* ---------- invite codes view ---------- */
 const ISSUES_API = "https://api.github.com/repos/appstoy/muse-use-cases/issues?labels=invite-code&state=open&per_page=100";
+const SUBMIT_URL = "https://github.com/appstoy/muse-use-cases/issues/new";
 let INVITES = [];
+
 function parseInvite(issue){
   const body = issue.body || "";
   const mCode = body.match(/###\s*你的 Muse 邀请码\s*\n+#?\s*([A-Za-z0-9]{4,12})/)
@@ -744,78 +1002,206 @@ function remainingOf(inv){
   if (inv.used !== null && inv.total !== null) return Math.max(inv.total - inv.used, 0);
   return null;
 }
-function inviteCardHTML(inv, isOwner){
+
+/* Fisher-Yates shuffle, then take n */
+function pickRandom(arr, n){
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a.slice(0, n);
+}
+
+/* the site owner's code — always first and largest */
+function renderOwnerCard(){
+  const el = $("#ownerSlot");
+  if (!el) return;
+  const intro = lang === "zh"
+    ? "欢迎使用站长邀请码加入 Muse，一起玩转 AI 智能体。"
+    : "Use the owner code to join Muse and get the most out of your AI agent.";
+  el.innerHTML = '<section class="owner-card">'
+    + '<div class="owner-card-main">'
+    + '<div class="owner-label">' + T().ownerLabel + '</div>'
+    + '<div class="owner-code" data-code="' + OWNER_CODE + '">' + OWNER_CODE + '</div>'
+    + '<div class="owner-intro">' + intro + '</div>'
+    + '</div>'
+    + '<div class="owner-card-side">'
+    + '<button class="btn-light" id="ownerCopyBtn" data-code="' + OWNER_CODE + '">' + T().copy + '</button>'
+    + '<span class="owner-hint">' + (lang === "zh" ? "点击即可复制" : "Click to copy") + '</span>'
+    + '</div></section>';
+  const codeEl = el.querySelector(".owner-code");
+  const btn = el.querySelector("#ownerCopyBtn");
+  codeEl.addEventListener("click", function(){ copyCode(OWNER_CODE, null); });
+  btn.addEventListener("click", function(){ copyCode(OWNER_CODE, btn); });
+}
+
+function inviteCardHTML(inv){
   const meta = [];
   if (inv.used !== null && inv.total !== null && inv.total > 0){
     const left = Math.max(inv.total - inv.used, 0);
     const pct = Math.min(inv.used / inv.total * 100, 100);
-    meta.push(`<div class="progress"><div style="width:${pct}%"></div></div>`);
-    meta.push(lang === "zh"
-      ? `<div class="icode-meta">${T().usedWord} ${inv.used}${T().timesWord} · ${T().leftWord} ${left}${T().timesWord}</div>`
-      : `<div class="icode-meta">${T().usedWord} ${inv.used} · ${left} ${T().leftWord}</div>`);
+    meta.push('<div class="progress"><div style="width:' + pct + '%"></div></div>');
+    meta.push('<div class="icode-meta">' + T().usedWord + ' ' + inv.used + T().timesWord
+      + ' · ' + T().leftWord + ' ' + left + T().timesWord + '</div>');
   } else if (inv.used !== null){
-    meta.push(lang === "zh"
-      ? `<div class="icode-meta">${T().usedWord} ${inv.used}${T().timesWord}</div>`
-      : `<div class="icode-meta">${T().usedWord} ${inv.used}</div>`);
+    meta.push('<div class="icode-meta">' + T().usedWord + ' ' + inv.used + T().timesWord + '</div>');
   }
   const spent = remainingOf(inv) === 0;
-  return `<article class="icode${spent ? " spent" : ""}">
-    ${isOwner ? `<span class="owner-tag">${T().ownerBadge}</span>` : ""}
-    <div class="icode-top"><code data-code="${inv.code}">${inv.code}</code>
-      <button class="copybtn" data-code="${inv.code}">${T().copy}</button></div>
-    ${meta.join("")}
-    ${inv.intro ? `<p class="icode-intro">${inv.intro}</p>` : `<div class="icode-intro"></div>`}
-    <div class="icode-foot"><span>@${inv.user} · ${inv.date}</span>
-      ${inv.url ? `<a href="${inv.url}" target="_blank" rel="noopener">${T().updateUsage}</a>` : ""}</div>
-  </article>`;
+  const foot = '<div class="icode-foot"><span>@' + inv.user + ' · ' + inv.date + '</span>'
+    + (inv.url ? '<a href="' + inv.url + '" target="_blank" rel="noopener">' + T().updateUsage + '</a>' : '')
+    + '</div>';
+  return '<article class="icode random' + (spent ? ' spent' : '') + '">'
+    + '<div class="icode-top"><code data-code="' + inv.code + '">' + inv.code + '</code>'
+    + '<button class="copybtn" data-code="' + inv.code + '">' + T().copy + '</button></div>'
+    + meta.join('')
+    + (inv.intro ? '<p class="icode-intro">' + inv.intro + '</p>' : '<div class="icode-intro"></div>')
+    + foot + '</article>';
 }
-function renderInvites(){
-  const owner = { code: "JHB7ZS", used: null, total: null,
-    intro: lang === "zh" ? "站长 appstoy 的邀请码，欢迎使用" : "Owner appstoy's invite code — welcome aboard",
-    user: "appstoy", url: "", date: "" };
-  let list = INVITES.filter(i => i.code && i.code !== "JHB7ZS");
-  const seen = new Set();
-  list = list.filter(i => { if (seen.has(i.code)) return false; seen.add(i.code); return true; });
-  if (inviteLeftOnly) list = list.filter(i => remainingOf(i) !== 0);
-  list.sort((a, b) => {
-    const ra = remainingOf(a), rb = remainingOf(b);
-    if (ra === 0 && rb !== 0) return 1;
-    if (rb === 0 && ra !== 0) return -1;
-    if (ra === null && rb !== null) return 1;
-    if (rb === null && ra !== null) return -1;
-    if (ra !== null && rb !== null) return rb - ra;
-    return 0;
+
+/* dedupe, drop owner's code, drop spent ones when filtering */
+function communityPool(){
+  let list = INVITES.filter(function(i){ return i.code && i.code !== OWNER_CODE; });
+  const seen = {};
+  list = list.filter(function(i){
+    if (seen[i.code]) return false;
+    seen[i.code] = true;
+    return true;
   });
-  const nCodes = list.length + 1;
-  $("#inviteCount").textContent = T().inviteCount(nCodes);
-  const cards = [inviteCardHTML(owner, true)]
-    .concat(list.map(i => inviteCardHTML(i, false)));
-  $("#inviteGrid").innerHTML = cards.join("") ||
-    `<div class="empty">${T().inviteEmpty}</div>`;
-  document.querySelectorAll("[data-code]").forEach(el => {
-    if (el.tagName === "CODE") el.addEventListener("click", () => copyCode(el.dataset.code, null));
-  });
-  document.querySelectorAll(".copybtn").forEach(btn =>
-    btn.addEventListener("click", () => copyCode(btn.dataset.code, btn)));
+  if (inviteLeftOnly) list = list.filter(function(i){ return remainingOf(i) !== 0; });
+  return list;
 }
+
+function renderInvites(reshuffle){
+  const pool = communityPool();
+  const byCode = {};
+  pool.forEach(function(i){ byCode[i.code] = i; });
+  const n = Math.min(RANDOM_COUNT, pool.length);
+
+  if (reshuffle || !sampleCodes.length){
+    sampleCodes = pickRandom(pool, n).map(function(i){ return i.code; });
+  } else {
+    sampleCodes = sampleCodes.filter(function(c){ return byCode[c]; }).slice(0, n);
+    if (sampleCodes.length < n){
+      const rest = pool.filter(function(i){ return sampleCodes.indexOf(i.code) < 0; });
+      sampleCodes = sampleCodes.concat(pickRandom(rest, n - sampleCodes.length).map(function(i){ return i.code; }));
+    }
+  }
+  const shown = sampleCodes.map(function(c){ return byCode[c]; }).filter(Boolean);
+
+  const cnt = $("#inviteCount");
+  if (cnt) cnt.textContent = T().inviteCount(pool.length + 1);
+
+  const grid = $("#inviteGrid");
+  if (grid){
+    grid.innerHTML = shown.length
+      ? shown.map(inviteCardHTML).join("")
+      : '<div class="empty">' + T().communityEmpty + '</div>';
+    grid.querySelectorAll("[data-code]").forEach(function(el){
+      if (el.tagName === "CODE") el.addEventListener("click", function(){ copyCode(el.dataset.code, null); });
+    });
+    grid.querySelectorAll(".copybtn").forEach(function(btn){
+      btn.addEventListener("click", function(){ copyCode(btn.dataset.code, btn); });
+    });
+  }
+  const note = $("#communityNote");
+  if (note) note.textContent = shown.length ? T().randomNote(shown.length) : "";
+  renderOwnerCard();
+}
+
 function copyCode(code, btn){
-  navigator.clipboard.writeText(code).then(() => {
-    if (btn){ const old = btn.textContent; btn.textContent = T().copied;
-      setTimeout(() => btn.textContent = old, 1500); }
-  });
+  const done = function(){
+    if (btn){
+      const old = btn.textContent;
+      btn.textContent = T().copied;
+      setTimeout(function(){ btn.textContent = old; }, 1500);
+    }
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(code).then(done).catch(done);
+  } else { done(); }
 }
+
+/* ---------- upload my own invite code ---------- */
+const CODE_RE = /^[A-Za-z0-9]{4,12}$/;
+
+function submitInviteCode(){
+  const codeIn = $("#fCode"), totalIn = $("#fTotal"), introIn = $("#fIntro"), msg = $("#formMsg");
+  const code = (codeIn.value || "").trim().toUpperCase();
+  const total = (totalIn.value || "").trim();
+  const intro = (introIn.value || "").trim();
+
+  codeIn.classList.toggle("bad", !CODE_RE.test(code));
+  if (!CODE_RE.test(code)){
+    msg.className = "form-msg err";
+    msg.textContent = T().submitBad;
+    codeIn.focus();
+    return;
+  }
+  if (total && !/^\d{1,3}$/.test(total)){
+    msg.className = "form-msg err";
+    msg.textContent = T().submitBad;
+    totalIn.focus();
+    return;
+  }
+  const body = [
+    "### 你的 Muse 邀请码", "", code, "",
+    "### 已使用次数", "", "0", "",
+    "### 邀请码总名额（如果知道）", "", total || "", "",
+    "### 一句话介绍", "", intro || "", ""
+  ].join("\n");
+  const params = new URLSearchParams({
+    template: "share-invite-code.yml",
+    title: "[邀请码] " + code,
+    labels: "invite-code",
+    body: body
+  });
+  const btn = $("#submitBtn");
+  msg.className = "form-msg ok";
+  msg.textContent = T().submitOk;
+  btn.disabled = true;
+  window.open(SUBMIT_URL + "?" + params.toString(), "_blank", "noopener");
+  setTimeout(function(){
+    btn.disabled = false;
+    codeIn.value = ""; totalIn.value = ""; introIn.value = "";
+    codeIn.classList.remove("bad");
+  }, 1200);
+}
+
+/* localize the upload form + community section header */
+function renderSubmitForm(){
+  const set = function(sel, val){ const el = $(sel); if (el) el.textContent = val; };
+  set("#submitTitle", T().submitTitle);
+  set("#submitDesc", T().submitDesc);
+  const cLab = $("#fCodeLabel"), tLab = $("#fTotalLabel"), iLab = $("#fIntroLabel");
+  if (cLab) cLab.innerHTML = T().fCodeLabel;
+  if (tLab) tLab.innerHTML = T().fTotalLabel;
+  if (iLab) iLab.innerHTML = T().fIntroLabel;
+  const cIn = $("#fCode"), tIn = $("#fTotal"), iIn = $("#fIntro");
+  if (cIn) cIn.placeholder = T().fCodePh;
+  if (tIn) tIn.placeholder = T().fTotalPh;
+  if (iIn) iIn.placeholder = T().fIntroPh;
+  set("#submitBtn", T().submitBtn);
+  set("#communityTitle", T().communityTitle);
+  set("#shuffleBtn", T().shuffle);
+}
+
+
 function loadInvites(){
   if (inviteLoaded) return;
   inviteLoaded = true;
-  $("#inviteGrid").innerHTML = `<div class="empty">${T().inviteLoading}</div>`;
-  fetch(ISSUES_API).then(r => r.json()).then(list => {
+  $("#inviteGrid").innerHTML = '<div class="empty">' + T().inviteLoading + '</div>';
+  fetch(ISSUES_API).then(function(r){ return r.json(); }).then(function(list){
     INVITES = (Array.isArray(list) ? list : [])
-      .filter(i => !i.pull_request).map(parseInvite);
-    renderInvites();
-  }).catch(() => {
-    $("#inviteGrid").innerHTML = `<div class="empty">${T().inviteFail}</div>`;
+      .filter(function(i){ return !i.pull_request; })
+      .map(parseInvite);
+    renderInvites(true);
+  }).catch(function(){
+    $("#inviteGrid").innerHTML = '<div class="empty">' + T().inviteFail + '</div>';
+    renderOwnerCard();
   });
 }
+
 
 function renderAds(){
   $("#adSlots").innerHTML = [1, 2, 3].map(() =>
@@ -834,7 +1220,7 @@ function switchView(v){
   $("#viewCases").hidden = v !== "cases";
   $("#viewInvite").hidden = v !== "invite";
   $("#searchBox").classList.toggle("hidden", v !== "cases");
-  if (v === "invite") loadInvites();
+  if (v === "invite") { renderOwnerCard(); renderSubmitForm(); loadInvites(); }
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 $("#tabCases").addEventListener("click", () => switchView("cases"));
@@ -848,14 +1234,29 @@ $("#inviteLeftOnly").addEventListener("click", () => {
   $("#inviteLeftOnly").classList.toggle("on", inviteLeftOnly);
   if (inviteLoaded) renderInvites();
 });
+$("#shuffleBtn").addEventListener("click", () => { renderInvites(true); });
+$("#submitBtn").addEventListener("click", submitInviteCode);
+["#fCode","#fTotal","#fIntro"].forEach(sel => {
+  const el = $(sel);
+  if (el) el.addEventListener("input", () => {
+    const m = $("#formMsg");
+    if (m && m.className.indexOf("ok") >= 0){ m.className = "form-msg"; m.textContent = ""; }
+    if (el.classList.contains("bad")) el.classList.remove("bad");
+  });
+});
+["#fCode","#fTotal","#fIntro"].forEach(sel => {
+  $(sel).addEventListener("keydown", e => { if (e.key === "Enter"){ e.preventDefault(); submitInviteCode(); } });
+});
 $("#heroInviteBtn").addEventListener("click", () => {
-  navigator.clipboard.writeText("JHB7ZS").then(() => {
+  navigator.clipboard.writeText(OWNER_CODE).then(() => {
     $("#heroInviteText").textContent = T().heroCopied;
     setTimeout(() => $("#heroInviteText").textContent = T().heroInvite, 1500);
   });
 });
 
 applyLang();
+renderOwnerCard();
+renderSubmitForm();
 fetch("cases.json").then(r => r.json()).then(d => { DATA = d; renderAll(); })
   .catch(() => { $("#grid").innerHTML = `<div class="empty">${T().empty}</div>`; });
 </script>
