@@ -3,32 +3,39 @@
  * Sync case data from the original repo (jaxxchen003/muse-use-cases)
  * without touching our own branding (invite code, repo links) or the site UI.
  *
- *   node scripts/sync-upstream.js
- *   git commit -am "sync upstream" && git push
+ * Local:      node scripts/sync-upstream.js
+ * CI:         run by .github/workflows/sync-upstream.yml on a schedule
  */
 const fs = require("fs");
 const { execSync } = require("child_process");
 
-const UPSTREAM = "https://github.com/jaxxchen003/muse-use-cases.git";
-const OWNER_INVITE = "JHB7ZS";
+const UPSTREAM = process.env.UPSTREAM_REPO || "https://github.com/jaxxchen003/muse-use-cases.git";
+const OWNER_INVITE = process.env.OWNER_INVITE || "JHB7ZS";
 const OWNER_REPO = "https://github.com/appstoy/muse-use-cases";
 
-execSync("git remote get-url upstream", { stdio: "ignore" }) === undefined;
-try { execSync("git remote get-url upstream", { stdio: "ignore" }); }
-catch (e) { execSync("git remote add upstream " + UPSTREAM); }
+function run(cmd, opts) {
+  return execSync(cmd, Object.assign({ encoding: "utf8" }, opts || {}));
+}
+
+// make sure the upstream remote exists
+try { run("git remote get-url upstream", { stdio: "ignore" }); }
+catch (e) { run("git remote add upstream " + UPSTREAM, { stdio: "inherit" }); }
 
 console.log("fetching upstream...");
-execSync("git fetch upstream main", { stdio: "inherit" });
+execSync("git fetch upstream main --depth=1", { stdio: "inherit" });
 
-const raw = execSync("git show upstream/main:docs/cases.json", { maxBuffer: 128 * 1024 * 1024 }).toString("utf8");
+const raw = run("git show upstream/main:docs/cases.json", { maxBuffer: 128 * 1024 * 1024 });
 const up = JSON.parse(raw);
 const local = JSON.parse(fs.readFileSync("docs/cases.json", "utf8"));
 
-if (up.cases.length === local.cases.length && up.meta.updated === local.meta.updated) {
+const sameCount = up.cases.length === local.cases.length;
+const sameDate = up.meta.updated === local.meta.updated;
+if (sameCount && sameDate) {
   console.log("already up to date (" + local.cases.length + " cases, " + local.meta.updated + ")");
   process.exit(0);
 }
 
+// keep OUR identity
 up.meta.invite = OWNER_INVITE;
 up.meta.repo = OWNER_REPO;
 fs.writeFileSync("docs/cases.json", JSON.stringify(up, null, 2) + "\n", "utf8");

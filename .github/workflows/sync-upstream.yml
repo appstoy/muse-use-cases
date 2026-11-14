@@ -1,0 +1,40 @@
+name: Sync cases from upstream
+
+on:
+  schedule:
+    # every day at 01:00 UTC (09:00 Beijing) — upstream publishes around 00:00 Beijing
+    - cron: "0 1 * * *"
+  workflow_dispatch:      # manual "Run workflow" button
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-upstream
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Sync case data from upstream
+        run: node scripts/sync-upstream.js
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name  "appstoy-bot"
+          git config user.email "appstoy@users.noreply.github.com"
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes — already in sync."
+            exit 0
+          fi
+          COUNT=$(node -pe "require('./docs/cases.json').meta.count")
+          git add docs/cases.json README.md README_EN.md
+          git commit -m "Auto-sync upstream cases (${COUNT} total)"
+          git push
