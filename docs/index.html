@@ -54,13 +54,6 @@ header.top .wrap.head-wrap{display:grid;grid-template-columns:1fr auto 1fr;align
   padding:15px 38px;font-size:20px;font-weight:800;cursor:pointer}
 .hero-invite:hover{opacity:.88}
 .hero-side{color:var(--muted);font-size:17px}
-.hero-cards{display:flex;flex-direction:column;gap:18px;min-width:300px;position:relative;z-index:1}
-.hero-card{background:#fff;border:1.5px solid var(--line);border-radius:16px;
-  padding:20px 24px;box-shadow:0 4px 14px rgba(17,20,24,.04)}
-.hero-card-top{display:flex;align-items:center;gap:10px;color:#4b5563;font-size:16px;margin-bottom:6px}
-.check{width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;flex:none;
-  display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-weight:800}
-.hero-card-amt{font-size:26px;font-weight:800;color:var(--ink);padding-left:36px;white-space:nowrap}
 
 .stats{display:flex;gap:14px;flex-wrap:wrap;margin:22px 0}
 .stat{flex:1;min-width:150px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 20px}
@@ -203,11 +196,6 @@ img,video,pre,table{max-width:100%}
   .hero-row{gap:12px}
   .hero-invite{font-size:14px;padding:11px 20px}
   .hero-side{font-size:13px}
-  .hero-cards{gap:12px;min-width:0;width:100%;max-width:100%;flex-direction:column}
-  .hero-card{padding:14px 16px;border-radius:13px;max-width:100%}
-  .hero-card-top{font-size:13px;gap:8px;margin-bottom:4px}
-  .check{width:22px;height:22px;font-size:12px}
-  .hero-card-amt{font-size:19px;padding-left:30px;white-space:normal;overflow-wrap:anywhere}
 
   /* stats: 2x2 compact grid instead of tall stacked cards */
   .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:14px 0}
@@ -302,16 +290,6 @@ img,video,pre,table{max-width:100%}
             <span class="hero-side" id="heroSide"></span>
           </div>
         </div>
-        <div class="hero-cards">
-          <div class="hero-card">
-            <div class="hero-card-top"><span class="check">✓</span><span id="heroCard1t"></span></div>
-            <div class="hero-card-amt" id="heroCard1a"></div>
-          </div>
-          <div class="hero-card">
-            <div class="hero-card-top"><span class="check">✓</span><span id="heroCard2t"></span></div>
-            <div class="hero-card-amt" id="heroCard2a"></div>
-          </div>
-        </div>
       </div>
     </section>
     <section class="stats" id="stats"></section>
@@ -396,8 +374,6 @@ const STR = {
     countPhrase: "个真实高价值玩法",
     heroInvite: "邀请码 JHB7ZS", heroCopied: "已复制 ✓",
     heroSide: "Issues 投稿玩法 · 互助邀请码",
-    heroCard1t: "车险一键切换", heroCard1a: "年省 $3,500",
-    heroCard2t: "Verizon 账单谈判", heroCard2a: "$516 → $386 / 月",
     tabCases: "💡 案例库", tabInvite: "🎁 邀请码互助",
     inviteTitle: "🎁 邀请码互助区",
     inviteDesc: "把你的 Muse 邀请码分享出来，大家互帮互助。点击邀请码一键复制。",
@@ -444,8 +420,6 @@ const STR = {
     countPhrase: "real high-value playbooks",
     heroInvite: "Invite code JHB7ZS", heroCopied: "Copied ✓",
     heroSide: "Share playbooks & invite codes in Issues",
-    heroCard1t: "Auto insurance switch", heroCard1a: "Save $3,500/yr",
-    heroCard2t: "Verizon bill haggle", heroCard2a: "$516 → $386 / mo",
     tabCases: "💡 Cases", tabInvite: "🎁 Invite codes",
     inviteTitle: "🎁 Community invite codes",
     inviteDesc: "Share your Muse invite code and help each other out. Click a code to copy it.",
@@ -492,8 +466,6 @@ const STR = {
     countPhrase: "件のリアルな高価値プレイブック",
     heroInvite: "招待コード JHB7ZS", heroCopied: "コピーしました ✓",
     heroSide: "Issuesで活用法・招待コードをシェア",
-    heroCard1t: "自動車保険の乗り換え", heroCard1a: "年間 $3,500 節約",
-    heroCard2t: "Verizonの料金交渉", heroCard2a: "$516 → $386 / 月",
     tabCases: "💡 ケース集", tabInvite: "🎁 招待コード",
     inviteTitle: "🎁 招待コード共有エリア",
     inviteDesc: "あなたのMuse招待コードをシェアして、みんなで助け合いましょう。コードをクリックするとコピーできます。",
@@ -540,8 +512,6 @@ const STR = {
     countPhrase: "개의 실제 고가치 플레이북",
     heroInvite: "초대 코드 JHB7ZS", heroCopied: "복사됨 ✓",
     heroSide: "Issues에서 활용법·초대 코드 공유",
-    heroCard1t: "자동차 보험 갈아타기", heroCard1a: "연간 $3,500 절약",
-    heroCard2t: "Verizon 요금 협상", heroCard2a: "$516 → $386 / 월",
     tabCases: "💡 사례집", tabInvite: "🎁 초대 코드",
     inviteTitle: "🎁 초대 코드 공유 공간",
     inviteDesc: "당신의 Muse 초대 코드를 공유하고 서로 도와주세요. 코드를 클릭하면 복사됩니다.",
@@ -588,8 +558,6 @@ const STR = {
     countPhrase: "เพลย์บุ๊กมูลค่าสูงจากผู้ใช้จริง",
     heroInvite: "รหัสเชิญ JHB7ZS", heroCopied: "คัดลอกแล้ว ✓",
     heroSide: "แชร์วิธีใช้และรหัสเชิญใน Issues",
-    heroCard1t: "เปลี่ยนประกันรถยนต์", heroCard1a: "ประหยัด $3,500/ปี",
-    heroCard2t: "ต่อรองบิล Verizon", heroCard2a: "$516 → $386 / เดือน",
     tabCases: "💡 คลังเคส", tabInvite: "🎁 รหัสเชิญ",
     inviteTitle: "🎁 พื้นที่แบ่งปันรหัสเชิญ",
     inviteDesc: "แบ่งปันรหัสเชิญ Muse ของคุณเพื่อช่วยเหลือกัน คลิกรหัสเพื่อคัดลอก",
@@ -636,8 +604,6 @@ const STR = {
     countPhrase: "playbook giá trị cao từ người dùng thật",
     heroInvite: "Mã mời JHB7ZS", heroCopied: "Đã sao chép ✓",
     heroSide: "Chia sẻ cách dùng & mã mời trong Issues",
-    heroCard1t: "Đổi bảo hiểm ô tô", heroCard1a: "Tiết kiệm $3.500/năm",
-    heroCard2t: "Mặc cả hóa đơn Verizon", heroCard2a: "$516 → $386 / tháng",
     tabCases: "💡 Thư viện case", tabInvite: "🎁 Mã mời",
     inviteTitle: "🎁 Khu vực chia sẻ mã mời",
     inviteDesc: "Chia sẻ mã mời Muse của bạn để mọi người giúp đỡ lẫn nhau. Nhấn vào mã để sao chép.",
@@ -684,8 +650,6 @@ const STR = {
     countPhrase: "playbook bernilai tinggi dari pengguna asli",
     heroInvite: "Kode undangan JHB7ZS", heroCopied: "Tersalin ✓",
     heroSide: "Bagikan cara pakai & kode undangan di Issues",
-    heroCard1t: "Pindah asuransi mobil", heroCard1a: "Hemat $3.500/tahun",
-    heroCard2t: "Nego tagihan Verizon", heroCard2a: "$516 → $386 / bulan",
     tabCases: "💡 Kumpulan Kasus", tabInvite: "🎁 Kode Undangan",
     inviteTitle: "🎁 Area berbagi kode undangan",
     inviteDesc: "Bagikan kode undangan Muse kamu dan saling membantu. Klik kode untuk menyalin.",
@@ -732,8 +696,6 @@ const STR = {
     countPhrase: "echte hochwertige Playbooks",
     heroInvite: "Einladungscode JHB7ZS", heroCopied: "Kopiert ✓",
     heroSide: "Anwendungsfälle & Einladungscodes in Issues teilen",
-    heroCard1t: "Kfz-Versicherung wechseln", heroCard1a: "$3.500/Jahr sparen",
-    heroCard2t: "Verizon-Rechnung verhandeln", heroCard2a: "$516 → $386 / Monat",
     tabCases: "💡 Fälle", tabInvite: "🎁 Einladungscodes",
     inviteTitle: "🎁 Einladungscodes der Community",
     inviteDesc: "Teile deinen Muse-Einladungscode und helft einander. Klicke auf einen Code, um ihn zu kopieren.",
@@ -780,8 +742,6 @@ const STR = {
     countPhrase: "playbooks à haute valeur ajoutée",
     heroInvite: "Code d'invitation JHB7ZS", heroCopied: "Copié ✓",
     heroSide: "Partager cas d'usage et codes dans Issues",
-    heroCard1t: "Changer d'assurance auto", heroCard1a: "Économiser 3 500 $/an",
-    heroCard2t: "Négocier la facture Verizon", heroCard2a: "516 $ → 386 $ / mois",
     tabCases: "💡 Cas d'usage", tabInvite: "🎁 Codes d'invitation",
     inviteTitle: "🎁 Codes d'invitation communautaires",
     inviteDesc: "Partagez votre code d'invitation Muse et entraidez-vous. Cliquez sur un code pour le copier.",
@@ -828,8 +788,6 @@ const STR = {
     countPhrase: "playbooks reales de alto valor",
     heroInvite: "Código de invitación JHB7ZS", heroCopied: "Copiado ✓",
     heroSide: "Compartir casos y códigos en Issues",
-    heroCard1t: "Cambiar el seguro del auto", heroCard1a: "Ahorrar $3.500/año",
-    heroCard2t: "Negociar la factura de Verizon", heroCard2a: "$516 → $386 / mes",
     tabCases: "💡 Casos", tabInvite: "🎁 Códigos de invitación",
     inviteTitle: "🎁 Códigos de invitación de la comunidad",
     inviteDesc: "Comparte tu código de invitación de Muse y ayúdense entre todos. Haz clic en un código para copiarlo.",
@@ -876,8 +834,6 @@ const STR = {
     countPhrase: "playbooks reais de alto valor",
     heroInvite: "Código de convite JHB7ZS", heroCopied: "Copiado ✓",
     heroSide: "Compartilhar casos e códigos nas Issues",
-    heroCard1t: "Trocar o seguro do carro", heroCard1a: "Economizar US$ 3.500/ano",
-    heroCard2t: "Negociar a fatura da Verizon", heroCard2a: "US$ 516 → US$ 386 / mês",
     tabCases: "💡 Casos", tabInvite: "🎁 Códigos de convite",
     inviteTitle: "🎁 Códigos de convite da comunidade",
     inviteDesc: "Compartilhe seu código de convite do Muse e ajudem uns aos outros. Clique em um código para copiá-lo.",
@@ -932,10 +888,6 @@ function renderHero(){
   $("#heroSub").innerHTML = heroSubHTML();
   $("#heroInviteText").textContent = T().heroInvite;
   $("#heroSide").textContent = T().heroSide;
-  $("#heroCard1t").textContent = T().heroCard1t;
-  $("#heroCard1a").textContent = T().heroCard1a;
-  $("#heroCard2t").textContent = T().heroCard2t;
-  $("#heroCard2a").textContent = T().heroCard2a;
 }
 
 function applyLang(){
