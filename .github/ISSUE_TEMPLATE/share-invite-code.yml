@@ -1,6 +1,6 @@
 name: 🎁 分享邀请码
 description: 留下你的 Muse 邀请码，大家互助
-title: "[邀请码] "
+title: "[Invite code] "
 labels: ["invite-code"]
 body:
   - type: input
