@@ -2,8 +2,9 @@ name: Sync cases from upstream
 
 on:
   schedule:
-    # every day at 01:00 UTC (09:00 Beijing) — upstream publishes around 00:00 Beijing
-    - cron: "0 1 * * *"
+    # twice a day, Beijing 09:00 and 21:00 (upstream publishes around 00:00 Beijing)
+    - cron: "0 1 * * *"    # 01:00 UTC = 09:00 Beijing
+    - cron: "0 13 * * *"   # 13:00 UTC = 21:00 Beijing
   workflow_dispatch:      # manual "Run workflow" button
 
 permissions:
