@@ -131,6 +131,12 @@ header.top .wrap.head-wrap{display:grid;grid-template-columns:1fr auto 1fr;align
 .hero-invite{background:var(--brand);color:#fff;border:none;border-radius:999px;
   padding:15px 38px;font-size:20px;font-weight:800;cursor:pointer}
 .hero-invite:hover{opacity:.88}
+.hero-goto{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--text);
+  border:1.5px solid var(--line);border-radius:999px;padding:13px 26px;font-size:17px;font-weight:700;
+  cursor:pointer;white-space:nowrap}
+.hero-goto:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-soft)}
+.hero-goto svg{flex:none;transition:transform .2s ease}
+.hero-goto:hover svg{transform:translateX(3px)}
 .hero-side{color:var(--muted);font-size:17px}
 
 .stats{display:flex;gap:14px;flex-wrap:wrap;margin:22px 0}
@@ -339,6 +345,7 @@ header.top,.card,.hero,.stat,.pill,.search input,.invite-head,.icode,.submit-box
   .hero-sub{font-size:14px;margin-bottom:16px;line-height:1.5}
   .hero-row{gap:12px}
   .hero-invite{font-size:14px;padding:11px 20px}
+  .hero-goto{font-size:13px;padding:10px 16px;gap:6px}
   .hero-side{font-size:13px}
 
   /* stats: 2x2 compact grid instead of tall stacked cards */
@@ -442,6 +449,7 @@ header.top,.card,.hero,.stat,.pill,.search input,.invite-head,.icode,.submit-box
           <p class="hero-sub" id="heroSub"></p>
           <div class="hero-row">
             <button class="hero-invite" id="heroInviteBtn"><span id="heroInviteText"></span></button>
+            <button class="hero-goto" id="heroGotoInvite" type="button"><span id="heroGotoText"></span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="m12 5 7 7-7 7"/></svg></button>
             <span class="hero-side" id="heroSide"></span>
           </div>
         </div>
@@ -572,6 +580,7 @@ const STR = {
     footTag: "发现好软件，让工具更好用",
     themeToLight: "切换到浅色模式",
     themeToDark: "切换到深色模式",
+    heroGoto: "邀请码互助",
     catNames: { money: "省钱 · 账单 · 索赔", travel: "出行 · 旅行", shopping: "购物", productivity: "效率 · 自动化", content: "内容 · 创作", dev: "开发 · 建站", business: "生意 · 维权" }  },
   en: {
     logoSub: "Updated daily",
@@ -622,6 +631,7 @@ const STR = {
     footTag: "Discover great software, make tools work better",
     themeToLight: "Switch to light mode",
     themeToDark: "Switch to dark mode",
+    heroGoto: "Invite codes",
     catNames: { money: "Money saving", travel: "Travel", shopping: "Shopping", productivity: "Productivity", content: "Content", dev: "Dev", business: "Business" }  },
   ja: {
     logoSub: "毎日更新",
@@ -672,6 +682,7 @@ const STR = {
     footTag: "良いソフトを見つけ、ツールをもっと便利に",
     themeToLight: "ライトモードに切り替え",
     themeToDark: "ダークモードに切り替え",
+    heroGoto: "招待コード共有",
     catNames: { money: "節約・請求・返金", travel: "旅行", shopping: "買い物", productivity: "効率化・自動化", content: "コンテンツ・創作", dev: "開発・サイト構築", business: "ビジネス・権利保護" }  },
   ko: {
     logoSub: "매일 업데이트",
@@ -722,6 +733,7 @@ const STR = {
     footTag: "좋은 소프트웨어를 발견하고 도구를 더 유용하게",
     themeToLight: "라이트 모드로 전환",
     themeToDark: "다크 모드로 전환",
+    heroGoto: "초대 코드 공유",
     catNames: { money: "절약·요금·클레임", travel: "여행", shopping: "쇼핑", productivity: "효율·자동화", content: "콘텐츠·창작", dev: "개발·사이트 구축", business: "비즈니스·권리 보호" }  },
   th: {
     logoSub: "อัปเดตทุกวัน",
@@ -772,6 +784,7 @@ const STR = {
     footTag: "ค้นพบซอฟต์แวร์ดี ๆ ทำให้เครื่องมือใช้งานง่ายขึ้น",
     themeToLight: "สลับเป็นโหมดสว่าง",
     themeToDark: "สลับเป็นโหมดมืด",
+    heroGoto: "รหัสเชิญ",
     catNames: { money: "ประหยัด·บิล·เคลม", travel: "ท่องเที่ยว", shopping: "ช้อปปิ้ง", productivity: "ประสิทธิภาพ·อัตโนมัติ", content: "คอนเทนต์·สร้างสรรค์", dev: "พัฒนา·สร้างเว็บ", business: "ธุรกิจ·เรียกร้องสิทธิ์" }  },
   vi: {
     logoSub: "Cập nhật hằng ngày",
@@ -822,6 +835,7 @@ const STR = {
     footTag: "Khám phá phần mềm hay, để công cụ hữu ích hơn",
     themeToLight: "Chuyển sang chế độ sáng",
     themeToDark: "Chuyển sang chế độ tối",
+    heroGoto: "Mã mời",
     catNames: { money: "Tiết kiệm·hóa đơn·khiếu nại", travel: "Du lịch", shopping: "Mua sắm", productivity: "Hiệu suất·tự động hóa", content: "Nội dung·sáng tạo", dev: "Phát triển·xây web", business: "Kinh doanh·bảo vệ quyền lợi" }  },
   id: {
     logoSub: "Diperbarui harian",
@@ -872,6 +886,7 @@ const STR = {
     footTag: "Temukan software bagus, buat alat lebih berguna",
     themeToLight: "Beralih ke mode terang",
     themeToDark: "Beralih ke mode gelap",
+    heroGoto: "Kode undangan",
     catNames: { money: "Hemat·tagihan·klaim", travel: "Travel", shopping: "Belanja", productivity: "Produktivitas·otomasi", content: "Konten·kreasi", dev: "Dev·membangun web", business: "Bisnis·klaim hak" }  },
   de: {
     logoSub: "Täglich aktualisiert",
@@ -922,6 +937,7 @@ const STR = {
     footTag: "Gute Software finden, Werkzeuge besser nutzen",
     themeToLight: "Zum hellen Modus wechseln",
     themeToDark: "Zum dunklen Modus wechseln",
+    heroGoto: "Einladungscodes",
     catNames: { money: "Sparen·Rechnungen·Forderungen", travel: "Reisen", shopping: "Einkaufen", productivity: "Produktivität·Automatisierung", content: "Inhalte·Kreation", dev: "Entwicklung·Websites", business: "Geschäft·Rechtsdurchsetzung" }  },
   fr: {
     logoSub: "Mis à jour quotidiennement",
@@ -972,6 +988,7 @@ const STR = {
     footTag: "Découvrez de bons logiciels, utilisez mieux vos outils",
     themeToLight: "Passer en mode clair",
     themeToDark: "Passer en mode sombre",
+    heroGoto: "Codes d'invitation",
     catNames: { money: "Économies·factures·réclamations", travel: "Voyage", shopping: "Achats", productivity: "Productivité·automatisation", content: "Contenu·création", dev: "Dév·sites web", business: "Business·recours" }  },
   es: {
     logoSub: "Actualizado a diario",
@@ -1022,6 +1039,7 @@ const STR = {
     footTag: "Descubre buen software, usa mejor tus herramientas",
     themeToLight: "Cambiar a modo claro",
     themeToDark: "Cambiar a modo oscuro",
+    heroGoto: "Códigos de invitación",
     catNames: { money: "Ahorro·facturas·reclamos", travel: "Viajes", shopping: "Compras", productivity: "Productividad·automatización", content: "Contenido·creación", dev: "Desarrollo·webs", business: "Negocios·reclamaciones" }  },
   pt: {
     logoSub: "Atualizado diariamente",
@@ -1072,6 +1090,7 @@ const STR = {
     footTag: "Descubra bons softwares, use melhor suas ferramentas",
     themeToLight: "Mudar para modo claro",
     themeToDark: "Mudar para modo escuro",
+    heroGoto: "Códigos de convite",
     catNames: { money: "Economia·contas·reembolsos", travel: "Viagem", shopping: "Compras", productivity: "Produtividade·automação", content: "Conteúdo·criação", dev: "Desenvolvimento·sites", business: "Negócios·reivindicações" }  },
 };
 Object.keys(STR).forEach(l => { STR[l] = { ...STR.en, ...STR[l] }; });
@@ -1094,6 +1113,8 @@ function renderHero(){
   $("#heroTitle").textContent = T().heroTitle;
   $("#heroSub").innerHTML = heroSubHTML();
   $("#heroInviteText").textContent = T().heroInvite;
+  const gotoTextEl = $("#heroGotoText");
+  if (gotoTextEl) gotoTextEl.textContent = T().heroGoto;
   $("#heroSide").textContent = T().heroSide;
 }
 
@@ -1435,6 +1456,7 @@ $("#inviteLeftOnly").addEventListener("click", () => {
   if (inviteLoaded) renderInvites();
 });
 $("#shuffleBtn").addEventListener("click", () => { renderInvites(true); });
+$("#heroGotoInvite").addEventListener("click", () => switchView("invite"));
 $("#submitBtn").addEventListener("click", submitInviteCode);
 ["#fCode","#fTotal","#fIntro"].forEach(sel => {
   const el = $(sel);
