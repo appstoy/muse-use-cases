@@ -7,50 +7,67 @@
 <meta name="description" content="Meta 个人 AI 智能体 Muse 的真实高价值玩法合集，收录 X / Reddit / IG / FB / Threads 上的真实用户分享，每日更新。">
 <style>
 :root{
-  --bg:#f6f7f9; --card:#ffffff; --text:#14161a; --muted:#6b7280; --line:#e6e8ec;
-  --ink:#111418; --soft:#eef0f3;
+  /* appstoy brand palette (from appstoy.com) */
+  --brand:#ff6f06;          /* primary accent — orange */
+  --brand-soft:rgba(255,111,6,.12);
+  --brand-line:rgba(255,111,6,.35);
+  --blue:#2997f7;
+  --green:#12b928;
+  --purple:#9b51e0;
+
+  --bg:#292a2d;             /* page background */
+  --bg-deep:#232427;
+  --card:#3b3c3e;           /* card surface */
+  --card-hi:#45464a;        /* raised surface */
+  --text:#e5eef7;           /* primary text */
+  --muted:#9aa3ad;
+  --line:rgba(255,255,255,.09);
+  --ink:#ffffff;            /* "ink" = strongest contrast, now white */
+  --soft:rgba(255,255,255,.06);
+  --shadow:0 10px 40px rgba(0,0,0,.2);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:radial-gradient(1000px 500px at 50% -5%,#ffffff 0%,var(--bg) 60%) fixed,var(--bg);color:var(--text);
+body{background:var(--bg);color:var(--text);
   font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
 a{color:var(--ink)}
 .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
-header.top{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:rgba(255,255,255,.88);border-bottom:1px solid var(--line)}
+header.top{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:rgba(41,42,45,.9);border-bottom:1px solid var(--line)}
 header.top .wrap.head-wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;padding:14px 20px}
 .head-right{justify-self:end;display:flex;align-items:center;gap:12px}
 .logo{font-weight:800;font-size:20px;white-space:nowrap;color:var(--ink)}
 .logo small{color:var(--muted);font-weight:400;font-size:13px;margin-left:8px}
 .search{flex:1;min-width:180px;display:flex}
-.search input{flex:1;background:#fff;border:1px solid var(--line);border-radius:12px;color:var(--text);
+.search input{flex:1;background:var(--card);border:1px solid var(--line);border-radius:12px;color:var(--text);
   padding:10px 16px;font-size:15px;outline:none}
 .search input:focus{border-color:var(--ink)}
 .search.hidden{display:none}
-.lang-select{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 12px;font-size:14px;font-weight:600;color:var(--text);cursor:pointer;max-width:140px}
-.gh-btn{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);
+.lang-select{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:9px 12px;font-size:14px;font-weight:600;color:var(--text);cursor:pointer;max-width:140px;color-scheme:dark}
+.gh-btn{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);
   border-radius:999px;padding:9px 18px;font-size:14px;font-weight:700;color:var(--ink);text-decoration:none;white-space:nowrap}
-.gh-btn:hover{border-color:var(--ink);box-shadow:0 4px 12px rgba(17,20,24,.08)}
+.gh-btn:hover{border-color:var(--ink);box-shadow:0 4px 12px rgba(0,0,0,.35)}
 .gh-btn svg{flex:none}
 .tabs{display:flex;gap:10px;margin:22px 0 4px}
 .tabs-head{margin:0;justify-self:center}
 .tabs-head button{padding:8px 18px;font-size:14px}
 .search-bar{margin:18px 0 6px}
-.tabs button{background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 24px;
+.tabs button{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:10px 24px;
   font-size:15px;font-weight:700;cursor:pointer;color:var(--text)}
-.tabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-.hero{margin:18px 0 6px;background:#fff;border:1px solid var(--line);border-radius:20px;
+.tabs button.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+.hero{margin:18px 0 6px;background:var(--card);border:1px solid var(--line);border-radius:20px;
   padding:54px 58px;position:relative;overflow:hidden}
 .hero::before{content:"";position:absolute;inset:0;
-  background-image:radial-gradient(rgba(17,20,24,.09) 1.3px, transparent 1.4px);
+  background-image:radial-gradient(rgba(255,255,255,.07) 1.3px, transparent 1.4px);
   background-size:34px 34px;pointer-events:none}
 .hero::after{content:"";position:absolute;right:-100px;top:50%;width:360px;height:360px;transform:translateY(-50%);
-  border:2px solid rgba(17,20,24,.07);border-radius:50%;pointer-events:none}
-.hero-inner{position:relative;display:flex;gap:44px;align-items:center;justify-content:space-between}
+  border:2px solid rgba(255,255,255,.06);border-radius:50%;pointer-events:none}
+.hero-inner{position:relative;display:flex;flex-direction:column;align-items:flex-start;width:100%}
+.hero-main{width:100%;max-width:900px}
 .hero-label{font-size:19px;letter-spacing:8px;color:var(--muted);margin-bottom:16px}
 .hero-title{font-size:66px;font-weight:800;color:var(--ink);line-height:1.15;margin-bottom:12px;white-space:nowrap}
-.hero-sub{font-size:21px;color:#4b5563;margin-bottom:28px}
+.hero-sub{font-size:21px;color:var(--muted);margin-bottom:28px}
 .hero-sub b{color:var(--ink)}
 .hero-row{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
-.hero-invite{background:var(--ink);color:#fff;border:none;border-radius:999px;
+.hero-invite{background:var(--brand);color:#fff;border:none;border-radius:999px;
   padding:15px 38px;font-size:20px;font-weight:800;cursor:pointer}
 .hero-invite:hover{opacity:.88}
 .hero-side{color:var(--muted);font-size:17px}
@@ -60,72 +77,72 @@ header.top .wrap.head-wrap{display:grid;grid-template-columns:1fr auto 1fr;align
 .stat b{font-size:28px;color:var(--ink);display:block}
 .stat span{color:var(--muted);font-size:13px}
 .filters{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 20px;position:sticky;top:66px;z-index:40;
-  background:rgba(246,247,249,.92);padding:12px 0;backdrop-filter:blur(10px)}
-.pill{background:#fff;border:1px solid var(--line);color:var(--text);border-radius:999px;
+  background:rgba(41,42,45,.92);padding:12px 0;backdrop-filter:blur(10px)}
+.pill{background:var(--card);border:1px solid var(--line);color:var(--text);border-radius:999px;
   padding:8px 18px;font-size:14px;cursor:pointer;transition:.15s}
 .pill:hover{border-color:var(--ink)}
-.pill.on{background:var(--ink);color:#fff;border-color:var(--ink);font-weight:700}
+.pill.on{background:var(--brand);color:#fff;border-color:var(--brand);font-weight:700}
 .pill .n{opacity:.6;font-size:12px;margin-left:6px}
 #grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(330px,100%),1fr));gap:16px;padding-bottom:40px}
 #grid>*{min-width:0}
 .card{background:var(--card);border:1px solid var(--line);border-radius:18px;
   padding:20px;display:flex;flex-direction:column;gap:10px;transition:.15s}
-.card:hover{transform:translateY(-3px);border-color:#c9cdd4;box-shadow:0 12px 28px rgba(17,20,24,.08)}
+.card:hover{transform:translateY(-3px);border-color:var(--brand-line);box-shadow:0 12px 28px rgba(0,0,0,.35)}
 .card h3{font-size:17px;line-height:1.45;color:var(--ink)}
 .badge{font-size:12px;padding:3px 10px;border-radius:999px;display:inline-block;width:fit-content;font-weight:600}
 .badge.ok{background:#e6f7ef;color:#0e7a4f;border:1px solid #bfe8d2}
 .badge.cross{background:#fdf3e0;color:#9a6b12;border:1px solid #f0dcae}
 .result{color:var(--ink);font-weight:800;font-size:16px}
 .author{color:var(--muted);font-size:13px}
-.desc{color:#3d434d;font-size:14px;flex:1}
+.desc{color:var(--muted);font-size:14px;flex:1;line-height:1.6}
 .xbtn{align-self:flex-start;background:var(--soft);border:1px solid var(--line);color:var(--ink);
   border-radius:10px;padding:7px 16px;font-size:13px;text-decoration:none;font-weight:600}
-.xbtn:hover{background:#e2e5ea}
+.xbtn:hover{background:var(--brand-soft);border-color:var(--brand-line);color:var(--brand)}
 .empty{text-align:center;color:var(--muted);padding:60px 0;grid-column:1/-1}
 /* sort + load more */
 .sortbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:0 0 16px}
 .sortbar .lbl{color:var(--muted);font-size:13px;margin-right:2px}
-.sortbar button{background:#fff;border:1px solid var(--line);color:var(--text);border-radius:999px;padding:7px 16px;font-size:13px;cursor:pointer;font-weight:600}
-.sortbar button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.sortbar button{background:var(--card);border:1px solid var(--line);color:var(--text);border-radius:999px;padding:7px 16px;font-size:13px;cursor:pointer;font-weight:600}
+.sortbar button.on{background:var(--brand);color:#fff;border-color:var(--brand)}
 .loadmore-wrap{display:flex;justify-content:center;padding:6px 0 40px}
-.loadmore{background:var(--ink);color:#fff;border:none;border-radius:999px;padding:12px 34px;font-size:15px;font-weight:700;cursor:pointer}
+.loadmore{background:var(--brand);color:#fff;border:none;border-radius:999px;padding:12px 34px;font-size:15px;font-weight:700;cursor:pointer}
 .loadmore:hover{opacity:.88}
 .icode.spent{opacity:.55}
 .icode.spent:hover{transform:none;box-shadow:none}
-.btn-ghost{display:inline-block;background:#fff;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:12px 28px;font-weight:700;font-size:15px;cursor:pointer;margin-left:10px}
-.btn-ghost.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn-ghost{display:inline-block;background:var(--card);border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:12px 28px;font-weight:700;font-size:15px;cursor:pointer;margin-left:10px}
+.btn-ghost.on{background:var(--brand);color:#fff;border-color:var(--brand)}
 /* case media */
-.card-media{width:100%;border-radius:12px;display:block;background:#eef0f3}
+.card-media{width:100%;border-radius:12px;display:block;background:var(--bg-deep)}
 video.card-media{background:#000;max-height:340px}
 /* invite ad slots */
 .invite-count{color:var(--muted);font-size:13px;margin-top:10px}
 @media(max-width:640px){.invite-grid{grid-template-columns:1fr}}
 /* invite codes */
-.invite-head{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px;margin:18px 0}
+.invite-head{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px;margin:18px 0}
 .invite-head h2{font-size:22px;color:var(--ink);margin-bottom:8px}
 .invite-head p{color:var(--muted);font-size:14px}
-.invite-head .note{font-size:12px;color:#9aa1ac;margin-top:14px}
+.invite-head .note{font-size:12px;color:var(--muted);margin-top:14px}
 .invite-actions{margin-top:16px}
-.btn-ink{display:inline-block;background:var(--ink);color:#fff;border-radius:999px;
+.btn-ink{display:inline-block;background:var(--brand);color:#fff;border-radius:999px;
   padding:12px 28px;font-weight:700;text-decoration:none;font-size:15px}
 .btn-ink:hover{opacity:.88}
 .invite-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:6px 0 40px}
-.icode{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;
+.icode{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;
   display:flex;flex-direction:column;gap:10px;transition:.15s;position:relative}
-.icode:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(17,20,24,.08)}
+.icode:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.35)}
 .icode-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .icode code{font-family:ui-monospace,monospace;font-size:26px;font-weight:800;letter-spacing:2px;color:var(--ink);cursor:pointer}
-.copybtn{background:var(--ink);color:#fff;border:none;border-radius:999px;padding:8px 18px;
+.copybtn{background:var(--brand);color:#fff;border:none;border-radius:999px;padding:8px 18px;
   font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap}
 .copybtn:hover{opacity:.85}
-.owner-tag{position:absolute;top:14px;right:16px;font-size:11px;background:var(--ink);color:#fff;
+.owner-tag{position:absolute;top:14px;right:16px;font-size:11px;background:var(--brand);color:#fff;
   border-radius:999px;padding:3px 12px;font-weight:700}
 .progress{height:8px;background:var(--soft);border-radius:99px;overflow:hidden}
 .progress div{height:100%;background:var(--ink);border-radius:99px;transition:width .4s}
 .icode-meta{font-size:14px;font-weight:700;color:var(--ink)}
 .icode-meta small{color:var(--muted);font-weight:400}
 .icode-intro{font-size:13px;color:var(--muted);flex:1}
-.icode-foot{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#9aa1ac}
+.icode-foot{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--muted)}
 .icode-foot a{color:var(--muted);text-decoration:none}
 .icode-foot a:hover{text-decoration:underline}
 /* owner (site owner) invite showcase */
@@ -133,13 +150,13 @@ video.card-media{background:#000;max-height:340px}
 .section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:26px 0 4px}
 .section-head h3{font-size:17px;color:var(--ink);margin:0}
 .section-head .sub{font-size:13px;color:var(--muted);font-weight:400}
-.btn-sm{background:#fff;border:1px solid var(--line);color:var(--ink);border-radius:999px;
+.btn-sm{background:var(--card);border:1px solid var(--line);color:var(--ink);border-radius:999px;
   padding:9px 20px;font-size:13px;font-weight:700;cursor:pointer}
-.btn-sm:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn-sm:hover{background:var(--brand);color:#fff;border-color:var(--brand)}
 .icode.random{animation:fadeIn .35s ease}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 /* submit form */
-.submit-box{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 28px;margin:22px 0 8px}
+.submit-box{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px 28px;margin:22px 0 8px}
 .submit-box h3{font-size:18px;color:var(--ink);margin:0 0 6px}
 .submit-box p.sub{font-size:13px;color:var(--muted);margin:0 0 18px}
 .submit-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -148,18 +165,18 @@ video.card-media{background:#000;max-height:340px}
 .field label{font-size:12px;font-weight:800;color:var(--ink)}
 .field label span{font-weight:400;color:var(--muted)}
 input.field-in,textarea.field-in{width:100%;border:1.5px solid var(--line);border-radius:12px;
-  padding:12px 14px;font-size:14px;font-family:inherit;background:#fbfcfd;color:var(--ink);box-sizing:border-box}
-input.field-in:focus,textarea.field-in:focus{outline:none;border-color:var(--ink);background:#fff}
-input.field-in.bad{border-color:#e5484d;background:#fff6f6}
+  padding:12px 14px;font-size:14px;font-family:inherit;background:var(--bg-deep);color:var(--text);box-sizing:border-box}
+input.field-in:focus,textarea.field-in:focus{outline:none;border-color:var(--brand);background:var(--card-hi)}
+input.field-in.bad{border-color:#e5484d;background:rgba(229,72,77,.12)}
 .submit-foot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:16px}
-.btn-submit{background:var(--ink);color:#fff;border:none;border-radius:999px;padding:13px 30px;
+.btn-submit{background:var(--brand);color:#fff;border:none;border-radius:999px;padding:13px 30px;
   font-size:15px;font-weight:800;cursor:pointer}
 .btn-submit:hover{opacity:.88}
 .btn-submit:disabled{opacity:.5;cursor:not-allowed}
 .form-msg{font-size:13px;color:var(--muted)}
 .form-msg.err{color:#e5484d;font-weight:700}
 .form-msg.ok{color:#12a150;font-weight:700}
-footer{border-top:1px solid var(--line);padding:34px 0 60px;color:var(--muted);font-size:13px;background:#fff;margin-top:auto}
+footer{border-top:1px solid var(--line);padding:34px 0 60px;color:var(--muted);font-size:13px;background:var(--bg-deep);margin-top:auto}
 footer .wrap{display:flex;flex-direction:column;gap:10px}
 body{min-height:100vh;display:flex;flex-direction:column}
 .wrap.main{flex:1;min-width:0}
@@ -167,6 +184,50 @@ body{min-height:100vh;display:flex;flex-direction:column}
 /* never let the page scroll horizontally */
 html,body{max-width:100%;overflow-x:hidden}
 img,video,pre,table{max-width:100%}
+
+
+/* ---------- appstoy brand ---------- */
+.logo{display:flex;align-items:center;gap:10px}
+.brand-mark{width:30px;height:30px;border-radius:8px;flex:none;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--brand) 0%,#ff9a3c 100%);
+  box-shadow:0 4px 14px rgba(255,111,6,.32)}
+.brand-mark svg{display:block}
+.brand-text{display:flex;flex-direction:column;line-height:1.2}
+.brand-name{font-size:15px;font-weight:800;color:var(--brand);letter-spacing:.3px}
+.brand-sub{font-size:11px;color:var(--muted);font-weight:500;letter-spacing:.2px}
+@media(max-width:640px){
+  .brand-mark{width:26px;height:26px;border-radius:7px}
+  .brand-name{font-size:13px}
+  .brand-sub{font-size:10px}
+}
+
+
+/* ---------- appstoy visual polish ---------- */
+/* brand-tinted hero glow */
+.hero{position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.hero::before{background-image:radial-gradient(rgba(255,255,255,.06) 1.3px, transparent 1.4px)}
+.hero::after{border-color:rgba(255,111,6,.14)}
+/* orange accent bar on card hover */
+.card{transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease}
+.card:hover{border-color:var(--brand-line);box-shadow:0 14px 34px rgba(0,0,0,.42), 0 0 0 1px var(--brand-soft)}
+/* result line gets brand color */
+.card .result{color:var(--brand)}
+/* badges */
+.badge.ok{background:rgba(18,185,40,.14);color:#4ade80;border-color:rgba(18,185,40,.3)}
+.badge.cross{background:var(--brand-soft);color:#ff9a3c;border-color:var(--brand-line)}
+/* stats: subtle brand tint on the number */
+.stat b{color:var(--brand)}
+.stat{transition:border-color .18s ease}
+.stat:hover{border-color:var(--brand-line)}
+/* section headings */
+.section-head h3{color:var(--text)}
+/* scrollbar */
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--bg-deep)}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,.14);border-radius:99px}
+::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.22)}
+/* selection */
+::selection{background:rgba(255,111,6,.32);color:#fff}
 
 /* ========== mobile / small screens ========== */
 @media(max-width:860px){
@@ -263,7 +324,20 @@ img,video,pre,table{max-width:100%}
 
 <header class="top">
   <div class="wrap head-wrap">
-    <div class="logo"><span id="logoMain">💡 Muse 实战案例库</span><small id="logoSub">每日更新</small></div>
+    <a class="logo" href="./" style="text-decoration:none">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <rect x="2" y="2" width="5" height="5" rx="1.2" fill="#fff" opacity=".95"/>
+          <rect x="9" y="2" width="5" height="5" rx="1.2" fill="#fff" opacity=".55"/>
+          <rect x="2" y="9" width="5" height="5" rx="1.2" fill="#fff" opacity=".55"/>
+          <rect x="9" y="9" width="5" height="5" rx="1.2" fill="#fff" opacity=".95"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <span class="brand-name">appstoy</span>
+        <span class="brand-sub" id="brandSub">Muse 实战案例库</span>
+      </span>
+    </a>
     <nav class="tabs tabs-head">
       <button id="tabCases" class="on">💡 案例库</button>
       <button id="tabInvite">🎁 邀请码互助</button>
@@ -369,7 +443,7 @@ const STR = {
     viewX: "查看原帖 ↗", empty: "没有找到匹配的案例，换个关键词试试 🔍",
     disclaimer: "⚠️ 实际效果因账号权限、地区、服务支持而异；部分案例来自 #MuseMoneyChallenge 期间的用户自述；部分“电话谈判”案例实际有人工参与。本库仅做信息整理，不构成消费或投资建议。",
     foot: '🤝 在 <a href="https://github.com/appstoy/muse-use-cases/issues">Issues</a> 分享你的玩法（原帖链接）或邀请码 · 内容同步上游仓库 · <a href="https://github.com/appstoy/muse-use-cases">GitHub 仓库</a>',
-    heroLabel: "META MUSE · 真实玩家案例",
+    heroLabel: "APPSTOY · MUSE 真实玩家案例",
     heroTitle: "Muse 实战案例库",
     countPhrase: "个真实高价值玩法",
     heroInvite: "邀请码 JHB7ZS", heroCopied: "已复制 ✓",
@@ -415,7 +489,7 @@ const STR = {
     viewX: "View original post ↗", empty: "No matching cases — try another keyword 🔍",
     disclaimer: "⚠️ Results vary by account permissions, region and service support. Some cases are self-reported from the #MuseMoneyChallenge campaign; some “phone negotiation” cases reportedly involved humans. Informational only — not consumer or investment advice.",
     foot: '🤝 Share your playbook (original post link) or invite code in <a href="https://github.com/appstoy/muse-use-cases/issues">Issues</a> · Content synced from upstream · <a href="https://github.com/appstoy/muse-use-cases">GitHub repo</a>',
-    heroLabel: "META MUSE · REAL USER CASES",
+    heroLabel: "APPSTOY · REAL MUSE USER CASES",
     heroTitle: "Muse Use Cases",
     countPhrase: "real high-value playbooks",
     heroInvite: "Invite code JHB7ZS", heroCopied: "Copied ✓",
@@ -461,7 +535,7 @@ const STR = {
     viewX: "原投稿を見る ↗", empty: "一致するケースがありません。キーワードを変えてみてください 🔍",
     disclaimer: "⚠️ 効果はアカウント権限・地域・サービス対応により異なります。一部は #MuseMoneyChallenge 期間のユーザー自己申告です。一部「電話交渉」ケースには人が関与したとの報告があります。情報整理のみで、消費・投資の助言ではありません。",
     foot: '🤝 <a href="https://github.com/appstoy/muse-use-cases/issues">Issues</a> であなたの活用法（原投稿リンク）や招待コードをシェア · 毎日0時に自動更新 · <a href="https://github.com/appstoy/muse-use-cases">GitHubリポジトリ</a>',
-    heroLabel: "META MUSE · 実際のユーザー事例",
+    heroLabel: "APPSTOY · MUSE 実ユーザー事例",
     heroTitle: "Muse 活用事例集",
     countPhrase: "件のリアルな高価値プレイブック",
     heroInvite: "招待コード JHB7ZS", heroCopied: "コピーしました ✓",
@@ -507,7 +581,7 @@ const STR = {
     viewX: "원본 게시물 보기 ↗", empty: "일치하는 사례가 없습니다. 다른 키워드를 시도해 보세요 🔍",
     disclaimer: "⚠️ 효과는 계정 권한, 지역, 서비스 지원 여부에 따라 다릅니다. 일부 사례는 #MuseMoneyChallenge 기간의 사용자 자가 보고이며, 일부 “전화 협상” 사례에는 사람이 개입했다는 보고가 있습니다. 정보 정리용이며 소비·투자 조언이 아닙니다.",
     foot: '🤝 <a href="https://github.com/appstoy/muse-use-cases/issues">Issues</a>에서 당신의 활용법(원본 게시물 링크)이나 초대 코드를 공유하세요 · 매일 0시 자동 업데이트 · <a href="https://github.com/appstoy/muse-use-cases">GitHub 저장소</a>',
-    heroLabel: "META MUSE · 실제 사용자 사례",
+    heroLabel: "APPSTOY · MUSE 실제 사용자 사례",
     heroTitle: "Muse 활용 사례집",
     countPhrase: "개의 실제 고가치 플레이북",
     heroInvite: "초대 코드 JHB7ZS", heroCopied: "복사됨 ✓",
@@ -553,7 +627,7 @@ const STR = {
     viewX: "ดูโพสต์ต้นฉบับ ↗", empty: "ไม่พบเคสที่ตรงกัน ลองใช้คีย์เวิร์ดอื่น 🔍",
     disclaimer: "⚠️ ผลลัพธ์ขึ้นอยู่กับสิทธิ์บัญชี ภูมิภาค และการรองรับของบริการ เคสบางส่วนเป็นการรายงานของผู้ใช้ในช่วง #MuseMoneyChallenge และเคส “เจรจาทางโทรศัพท์” บางรายการมีรายงานว่ามีคนเข้ามาเกี่ยวข้อง ใช้เพื่อเป็นข้อมูลเท่านั้น ไม่ใช่คำแนะนำด้านการบริโภคหรือการลงทุน",
     foot: '🤝 แชร์วิธีใช้งานของคุณ (ลิงก์โพสต์ต้นฉบับ) หรือรหัสเชิญใน <a href="https://github.com/appstoy/muse-use-cases/issues">Issues</a> · อัปเดตอัตโนมัติทุกวันเวลา 00:00 · <a href="https://github.com/appstoy/muse-use-cases">ที่เก็บ GitHub</a>',
-    heroLabel: "META MUSE · เคสผู้ใช้จริง",
+    heroLabel: "APPSTOY · เคสผู้ใช้ Muse จริง",
     heroTitle: "คลังเคสการใช้งาน Muse",
     countPhrase: "เพลย์บุ๊กมูลค่าสูงจากผู้ใช้จริง",
     heroInvite: "รหัสเชิญ JHB7ZS", heroCopied: "คัดลอกแล้ว ✓",
@@ -599,7 +673,7 @@ const STR = {
     viewX: "Xem bài gốc ↗", empty: "Không tìm thấy case phù hợp, thử từ khóa khác nhé 🔍",
     disclaimer: "⚠️ Kết quả tùy thuộc vào quyền tài khoản, khu vực và dịch vụ hỗ trợ. Một số case do người dùng tự báo cáo trong #MuseMoneyChallenge; một số case “đàm phán qua điện thoại” được cho là có người thật tham gia. Chỉ mang tính tham khảo, không phải lời khuyên tiêu dùng hay đầu tư.",
     foot: '🤝 Chia sẻ cách dùng của bạn (link bài gốc) hoặc mã mời trong <a href="https://github.com/appstoy/muse-use-cases/issues">Issues</a> · Tự động cập nhật lúc 00:00 hằng ngày · <a href="https://github.com/appstoy/muse-use-cases">Kho GitHub</a>',
-    heroLabel: "META MUSE · CASE NGƯỜI DÙNG THẬT",
+    heroLabel: "APPSTOY · CASE NGƯỜI DÙNG THẬT",
     heroTitle: "Thư viện case dùng Muse",
     countPhrase: "playbook giá trị cao từ người dùng thật",
     heroInvite: "Mã mời JHB7ZS", heroCopied: "Đã sao chép ✓",
@@ -645,7 +719,7 @@ const STR = {
     viewX: "Lihat posting asli ↗", empty: "Tidak ada kasus yang cocok, coba kata kunci lain 🔍",
     disclaimer: "⚠️ Hasil berbeda-beda tergantung izin akun, wilayah, dan dukungan layanan. Sebagian kasus merupakan laporan pengguna selama #MuseMoneyChallenge; sebagian kasus “negosiasi telepon” dilaporkan melibatkan manusia. Hanya untuk informasi, bukan saran konsumsi atau investasi.",
     foot: '🤝 Bagikan caramu (tautan posting asli) atau kode undangan di <a href="https://github.com/appstoy/muse-use-cases/issues">Issues</a> · Diperbarui otomatis setiap hari pukul 00:00 · <a href="https://github.com/appstoy/muse-use-cases">Repositori GitHub</a>',
-    heroLabel: "META MUSE · KASUS PENGGUNA ASLI",
+    heroLabel: "APPSTOY · KASUS PENGGUNA ASLI",
     heroTitle: "Kumpulan Kasus Muse",
     countPhrase: "playbook bernilai tinggi dari pengguna asli",
     heroInvite: "Kode undangan JHB7ZS", heroCopied: "Tersalin ✓",
@@ -691,7 +765,7 @@ const STR = {
     viewX: "Originalpost ansehen ↗", empty: "Keine passenden Fälle gefunden – versuch es mit einem anderen Stichwort 🔍",
     disclaimer: "⚠️ Die Ergebnisse hängen von Kontoberechtigungen, Region und Dienstunterstützung ab. Einige Fälle sind Selbstauskünfte aus der #MuseMoneyChallenge; bei einigen „Telefonverhandlungs“-Fällen waren Berichten zufolge Menschen beteiligt. Nur zur Information – keine Verbrauchs- oder Anlageberatung.",
     foot: '🤝 Teile deinen Anwendungsfall (Link zum Originalpost) oder Einladungscode in den <a href="https://github.com/appstoy/muse-use-cases/issues">Issues</a> · Täglich um 00:00 automatisch aktualisiert · <a href="https://github.com/appstoy/muse-use-cases">GitHub-Repo</a>',
-    heroLabel: "META MUSE · ECHTE NUTZERFÄLLE",
+    heroLabel: "APPSTOY · ECHTE NUTZERFÄLLE",
     heroTitle: "Muse Anwendungsfälle",
     countPhrase: "echte hochwertige Playbooks",
     heroInvite: "Einladungscode JHB7ZS", heroCopied: "Kopiert ✓",
@@ -737,7 +811,7 @@ const STR = {
     viewX: "Voir le post d'origine ↗", empty: "Aucun cas correspondant, essayez un autre mot-clé 🔍",
     disclaimer: "⚠️ Les résultats varient selon les autorisations du compte, la région et la prise en charge du service. Certains cas sont des témoignages d'utilisateurs pendant #MuseMoneyChallenge ; certains cas de « négociation par téléphone » auraient impliqué des humains. À titre informatif uniquement — pas un conseil de consommation ou d'investissement.",
     foot: '🤝 Partagez votre cas d’usage (lien vers le post d’origine) ou votre code d’invitation dans les <a href="https://github.com/appstoy/muse-use-cases/issues">Issues</a> · Mise à jour automatique quotidienne à 00h00 · <a href="https://github.com/appstoy/muse-use-cases">Dépôt GitHub</a>',
-    heroLabel: "META MUSE · VRAIS CAS D'UTILISATEURS",
+    heroLabel: "APPSTOY · VRAIS CAS D'UTILISATEURS",
     heroTitle: "Cas d'usage Muse",
     countPhrase: "playbooks à haute valeur ajoutée",
     heroInvite: "Code d'invitation JHB7ZS", heroCopied: "Copié ✓",
@@ -783,7 +857,7 @@ const STR = {
     viewX: "Ver publicación original ↗", empty: "No hay casos coincidentes, prueba otra palabra clave 🔍",
     disclaimer: "⚠️ Los resultados varían según los permisos de la cuenta, la región y el soporte del servicio. Algunos casos son testimonios de usuarios durante #MuseMoneyChallenge; en algunos casos de «negociación telefónica» habrían participado personas. Solo informativo, no es asesoramiento de consumo ni de inversión.",
     foot: '🤝 Comparte tu caso (enlace a la publicación original) o tu código de invitación en los <a href="https://github.com/appstoy/muse-use-cases/issues">Issues</a> · Actualización automática diaria a las 00:00 · <a href="https://github.com/appstoy/muse-use-cases">Repositorio de GitHub</a>',
-    heroLabel: "META MUSE · CASOS REALES DE USUARIOS",
+    heroLabel: "APPSTOY · CASOS REALES DE USUARIOS",
     heroTitle: "Casos de uso de Muse",
     countPhrase: "playbooks reales de alto valor",
     heroInvite: "Código de invitación JHB7ZS", heroCopied: "Copiado ✓",
@@ -829,7 +903,7 @@ const STR = {
     viewX: "Ver publicação original ↗", empty: "Nenhum caso correspondente, tente outra palavra-chave 🔍",
     disclaimer: "⚠️ Os resultados variam conforme as permissões da conta, a região e o suporte do serviço. Alguns casos são relatos de usuários durante a #MuseMoneyChallenge; alguns casos de “negociação por telefone” teriam envolvido pessoas. Apenas informativo — não é aconselhamento de consumo ou investimento.",
     foot: '🤝 Compartilhe seu caso (link da publicação original) ou seu código de convite nas <a href="https://github.com/appstoy/muse-use-cases/issues">Issues</a> · Atualização automática diária às 00:00 · <a href="https://github.com/appstoy/muse-use-cases">Repositório GitHub</a>',
-    heroLabel: "META MUSE · CASOS REAIS DE USUÁRIOS",
+    heroLabel: "APPSTOY · CASOS REAIS DE USUÁRIOS",
     heroTitle: "Casos de uso do Muse",
     countPhrase: "playbooks reais de alto valor",
     heroInvite: "Código de convite JHB7ZS", heroCopied: "Copiado ✓",
@@ -893,8 +967,12 @@ function renderHero(){
 function applyLang(){
   document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
   renderHero();
-  $("#logoMain").textContent = lang === "zh" ? "💡 Muse 实战案例库" : "💡 Muse Use Cases";
-  $("#logoSub").textContent = T().logoSub;
+  const logoMainEl = $("#logoMain");
+  if (logoMainEl) logoMainEl.textContent = lang === "zh" ? "💡 Muse 实战案例库" : "💡 Muse Use Cases";
+  const logoSubEl = $("#logoSub");
+  if (logoSubEl) logoSubEl.textContent = T().logoSub;
+  const brandSubEl = $("#brandSub");
+  if (brandSubEl) brandSubEl.textContent = lang === "zh" ? "Muse 实战案例库" : "Muse Use Cases";
   $("#q").placeholder = T().searchPh;
   $("#ghLabel").textContent = T().ghStar;
   $("#disclaimer").textContent = T().disclaimer;
