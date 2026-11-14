@@ -46,6 +46,10 @@ header.top .wrap.head-wrap{display:grid;grid-template-columns:1fr auto 1fr;align
   border-radius:999px;padding:9px 18px;font-size:14px;font-weight:700;color:var(--ink);text-decoration:none;white-space:nowrap}
 .gh-btn:hover{border-color:var(--ink);box-shadow:0 4px 12px rgba(0,0,0,.35)}
 .gh-btn svg{flex:none}
+.site-btn{display:inline-flex;align-items:center;gap:7px;background:var(--brand);border:1px solid var(--brand);
+  border-radius:999px;padding:9px 16px;font-size:14px;font-weight:700;color:#fff;text-decoration:none;white-space:nowrap}
+.site-btn:hover{background:#ff8330;border-color:#ff8330;box-shadow:0 4px 14px rgba(255,111,6,.32)}
+.site-btn svg{flex:none;opacity:.95}
 .tabs{display:flex;gap:10px;margin:22px 0 4px}
 .tabs-head{margin:0;justify-self:center}
 .tabs-head button{padding:8px 18px;font-size:14px}
@@ -178,6 +182,11 @@ input.field-in.bad{border-color:#e5484d;background:rgba(229,72,77,.12)}
 .form-msg.ok{color:#12a150;font-weight:700}
 footer{border-top:1px solid var(--line);padding:34px 0 60px;color:var(--muted);font-size:13px;background:var(--bg-deep);margin-top:auto}
 footer .wrap{display:flex;flex-direction:column;gap:10px}
+.foot-brand{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);flex-wrap:wrap}
+.foot-brand a{display:inline-flex;align-items:center;gap:6px;color:var(--muted);text-decoration:none;font-weight:600}
+.foot-brand a:hover{color:var(--brand)}
+.foot-brand img{opacity:.9}
+.foot-brand .dot{opacity:.4}
 body{min-height:100vh;display:flex;flex-direction:column}
 .wrap.main{flex:1;min-width:0}
 
@@ -188,15 +197,13 @@ img,video,pre,table{max-width:100%}
 
 /* ---------- appstoy brand ---------- */
 .logo{display:flex;align-items:center;gap:10px}
-.brand-mark{width:30px;height:30px;border-radius:8px;flex:none;display:grid;place-items:center;
-  background:linear-gradient(135deg,var(--brand) 0%,#ff9a3c 100%);
-  box-shadow:0 4px 14px rgba(255,111,6,.32)}
-.brand-mark svg{display:block}
+.brand-mark{width:30px;height:30px;flex:none;display:block;object-fit:contain;
+  filter:drop-shadow(0 3px 10px rgba(41,151,247,.35))}
 .brand-text{display:flex;flex-direction:column;line-height:1.2}
-.brand-name{font-size:15px;font-weight:800;color:var(--brand);letter-spacing:.3px}
+.brand-name{font-size:15px;font-weight:800;color:var(--text);letter-spacing:.3px}
 .brand-sub{font-size:11px;color:var(--muted);font-weight:500;letter-spacing:.2px}
 @media(max-width:640px){
-  .brand-mark{width:26px;height:26px;border-radius:7px}
+  .brand-mark{width:26px;height:26px}
   .brand-name{font-size:13px}
   .brand-sub{font-size:10px}
 }
@@ -237,6 +244,8 @@ img,video,pre,table{max-width:100%}
   .logo small{display:none}
   .head-right{margin-left:auto;gap:8px}
   .gh-btn{padding:8px 12px;font-size:13px}
+  .site-btn{padding:8px 12px;font-size:13px}
+  .site-btn span{display:none}
   .gh-btn span{display:none}
   .lang-select{padding:8px 10px;font-size:13px;max-width:104px}
   .tabs-head{order:5;width:100%;justify-content:stretch;gap:8px}
@@ -325,14 +334,7 @@ img,video,pre,table{max-width:100%}
 <header class="top">
   <div class="wrap head-wrap">
     <a class="logo" href="./" style="text-decoration:none">
-      <span class="brand-mark" aria-hidden="true">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <rect x="2" y="2" width="5" height="5" rx="1.2" fill="#fff" opacity=".95"/>
-          <rect x="9" y="2" width="5" height="5" rx="1.2" fill="#fff" opacity=".55"/>
-          <rect x="2" y="9" width="5" height="5" rx="1.2" fill="#fff" opacity=".55"/>
-          <rect x="9" y="9" width="5" height="5" rx="1.2" fill="#fff" opacity=".95"/>
-        </svg>
-      </span>
+      <img class="brand-mark" src="assets/appstoy-mark.png" alt="appstoy" width="30" height="30">
       <span class="brand-text">
         <span class="brand-name">appstoy</span>
         <span class="brand-sub" id="brandSub">Muse 实战案例库</span>
@@ -344,6 +346,10 @@ img,video,pre,table{max-width:100%}
     </nav>
     <div class="head-right">
     <select id="langSel" class="lang-select" aria-label="language"></select>
+    <a class="site-btn" href="https://appstoy.com/" target="_blank" rel="noopener" title="appstoy.com">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8"/><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18z"/></svg>
+      <span id="siteLabel"></span>
+    </a>
     <a class="gh-btn" id="ghBtn" href="https://github.com/appstoy/muse-use-cases" target="_blank" rel="noopener" title="GitHub"><svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg><span id="ghLabel"></span></a>
     </div>
   </div>
@@ -419,6 +425,14 @@ img,video,pre,table{max-width:100%}
   <div class="wrap">
     <div id="disclaimer"></div>
     <div id="footLinks"></div>
+    <div class="foot-brand">
+      <a href="https://appstoy.com/" target="_blank" rel="noopener">
+        <img src="assets/appstoy-mark.png" alt="" width="16" height="16">
+        <span>appstoy.com</span>
+      </a>
+      <span class="dot">·</span>
+      <span id="footTag"></span>
+    </div>
   </div>
 </footer>
 
@@ -479,6 +493,8 @@ const STR = {
     submitHint: "提交后会跳到 GitHub 投稿页，点一下绿色按钮就上传好了。",
     allCodes: n => "社区已分享 {n} 个邀请码".replace("{n}", n),
     showingNote: "随机展示中",
+    siteLabel: "appstoy 主站",
+    footTag: "发现好软件，让工具更好用",
     catNames: { money: "省钱 · 账单 · 索赔", travel: "出行 · 旅行", shopping: "购物", productivity: "效率 · 自动化", content: "内容 · 创作", dev: "开发 · 建站", business: "生意 · 维权" }  },
   en: {
     logoSub: "Updated daily",
@@ -525,6 +541,8 @@ const STR = {
     submitHint: "You will be sent to GitHub; one green button and it is uploaded.",
     allCodes: n => "{n} community codes shared".replace("{n}", n),
     showingNote: "showing a random sample",
+    siteLabel: "appstoy.com",
+    footTag: "Discover great software, make tools work better",
     catNames: { money: "Money saving", travel: "Travel", shopping: "Shopping", productivity: "Productivity", content: "Content", dev: "Dev", business: "Business" }  },
   ja: {
     logoSub: "毎日更新",
@@ -571,6 +589,8 @@ const STR = {
     submitHint: "GitHub の投稿ページに移動します。緑のボタンを押せば完了です。",
     allCodes: n => "コミュニティ共有 {n} 件".replace("{n}", n),
     showingNote: "ランダム表示中",
+    siteLabel: "appstoy サイト",
+    footTag: "良いソフトを見つけ、ツールをもっと便利に",
     catNames: { money: "節約・請求・返金", travel: "旅行", shopping: "買い物", productivity: "効率化・自動化", content: "コンテンツ・創作", dev: "開発・サイト構築", business: "ビジネス・権利保護" }  },
   ko: {
     logoSub: "매일 업데이트",
@@ -617,6 +637,8 @@ const STR = {
     submitHint: "GitHub 제출 페이지로 이동합니다. 초록 버튼 한 번이면 업로드됩니다.",
     allCodes: n => "커뮤니티 공유 {n}개".replace("{n}", n),
     showingNote: "무작위 표시 중",
+    siteLabel: "appstoy 사이트",
+    footTag: "좋은 소프트웨어를 발견하고 도구를 더 유용하게",
     catNames: { money: "절약·요금·클레임", travel: "여행", shopping: "쇼핑", productivity: "효율·자동화", content: "콘텐츠·창작", dev: "개발·사이트 구축", business: "비즈니스·권리 보호" }  },
   th: {
     logoSub: "อัปเดตทุกวัน",
@@ -663,6 +685,8 @@ const STR = {
     submitHint: "ระบบจะพาไปหน้าโพสต์ของ GitHub กดปุ่มสีเขียวครั้งเดียวก็เสร็จ",
     allCodes: n => "ชุมชนแชร์ {n} รหัส".replace("{n}", n),
     showingNote: "กำลังสุ่มแสดง",
+    siteLabel: "เว็บ appstoy",
+    footTag: "ค้นพบซอฟต์แวร์ดี ๆ ทำให้เครื่องมือใช้งานง่ายขึ้น",
     catNames: { money: "ประหยัด·บิล·เคลม", travel: "ท่องเที่ยว", shopping: "ช้อปปิ้ง", productivity: "ประสิทธิภาพ·อัตโนมัติ", content: "คอนเทนต์·สร้างสรรค์", dev: "พัฒนา·สร้างเว็บ", business: "ธุรกิจ·เรียกร้องสิทธิ์" }  },
   vi: {
     logoSub: "Cập nhật hằng ngày",
@@ -709,6 +733,8 @@ const STR = {
     submitHint: "Bạn sẽ được chuyển tới trang đăng bài trên GitHub, bấm nút xanh là hoàn tất.",
     allCodes: n => "{n} mã từ cộng đồng".replace("{n}", n),
     showingNote: "đang hiển thị ngẫu nhiên",
+    siteLabel: "trang appstoy",
+    footTag: "Khám phá phần mềm hay, để công cụ hữu ích hơn",
     catNames: { money: "Tiết kiệm·hóa đơn·khiếu nại", travel: "Du lịch", shopping: "Mua sắm", productivity: "Hiệu suất·tự động hóa", content: "Nội dung·sáng tạo", dev: "Phát triển·xây web", business: "Kinh doanh·bảo vệ quyền lợi" }  },
   id: {
     logoSub: "Diperbarui harian",
@@ -755,6 +781,8 @@ const STR = {
     submitHint: "Kamu akan diarahkan ke halaman posting GitHub; satu tombol hijau selesai.",
     allCodes: n => "{n} kode dari komunitas".replace("{n}", n),
     showingNote: "menampilkan acak",
+    siteLabel: "situs appstoy",
+    footTag: "Temukan software bagus, buat alat lebih berguna",
     catNames: { money: "Hemat·tagihan·klaim", travel: "Travel", shopping: "Belanja", productivity: "Produktivitas·otomasi", content: "Konten·kreasi", dev: "Dev·membangun web", business: "Bisnis·klaim hak" }  },
   de: {
     logoSub: "Täglich aktualisiert",
@@ -801,6 +829,8 @@ const STR = {
     submitHint: "Du wirst zu GitHub weitergeleitet; ein grüner Button und fertig.",
     allCodes: n => "{n} Community-Codes geteilt".replace("{n}", n),
     showingNote: "zufällige Auswahl",
+    siteLabel: "appstoy-Website",
+    footTag: "Gute Software finden, Werkzeuge besser nutzen",
     catNames: { money: "Sparen·Rechnungen·Forderungen", travel: "Reisen", shopping: "Einkaufen", productivity: "Produktivität·Automatisierung", content: "Inhalte·Kreation", dev: "Entwicklung·Websites", business: "Geschäft·Rechtsdurchsetzung" }  },
   fr: {
     logoSub: "Mis à jour quotidiennement",
@@ -847,6 +877,8 @@ const STR = {
     submitHint: "Vous serez redirigé vers la page de publication GitHub ; un bouton vert suffit.",
     allCodes: n => "{n} codes partagés".replace("{n}", n),
     showingNote: "échantillon aléatoire",
+    siteLabel: "site appstoy",
+    footTag: "Découvrez de bons logiciels, utilisez mieux vos outils",
     catNames: { money: "Économies·factures·réclamations", travel: "Voyage", shopping: "Achats", productivity: "Productivité·automatisation", content: "Contenu·création", dev: "Dév·sites web", business: "Business·recours" }  },
   es: {
     logoSub: "Actualizado a diario",
@@ -893,6 +925,8 @@ const STR = {
     submitHint: "Te llevaremos a la página de publicación de GitHub; con un botón verde basta.",
     allCodes: n => "{n} códigos compartidos".replace("{n}", n),
     showingNote: "muestra aleatoria",
+    siteLabel: "sitio appstoy",
+    footTag: "Descubre buen software, usa mejor tus herramientas",
     catNames: { money: "Ahorro·facturas·reclamos", travel: "Viajes", shopping: "Compras", productivity: "Productividad·automatización", content: "Contenido·creación", dev: "Desarrollo·webs", business: "Negocios·reclamaciones" }  },
   pt: {
     logoSub: "Atualizado diariamente",
@@ -939,6 +973,8 @@ const STR = {
     submitHint: "Você será levado à página de publicação do GitHub; um botão verde resolve.",
     allCodes: n => "{n} códigos compartilhados".replace("{n}", n),
     showingNote: "amostra aleatória",
+    siteLabel: "site appstoy",
+    footTag: "Descubra bons softwares, use melhor suas ferramentas",
     catNames: { money: "Economia·contas·reembolsos", travel: "Viagem", shopping: "Compras", productivity: "Produtividade·automação", content: "Conteúdo·criação", dev: "Desenvolvimento·sites", business: "Negócios·reivindicações" }  },
 };
 Object.keys(STR).forEach(l => { STR[l] = { ...STR.en, ...STR[l] }; });
@@ -973,6 +1009,10 @@ function applyLang(){
   if (logoSubEl) logoSubEl.textContent = T().logoSub;
   const brandSubEl = $("#brandSub");
   if (brandSubEl) brandSubEl.textContent = lang === "zh" ? "Muse 实战案例库" : "Muse Use Cases";
+  const siteLabelEl = $("#siteLabel");
+  if (siteLabelEl) siteLabelEl.textContent = T().siteLabel;
+  const footTagEl = $("#footTag");
+  if (footTagEl) footTagEl.textContent = T().footTag;
   $("#q").placeholder = T().searchPh;
   $("#ghLabel").textContent = T().ghStar;
   $("#disclaimer").textContent = T().disclaimer;
