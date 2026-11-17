@@ -525,7 +525,7 @@ let DATA = null, activeCat = "all", activeView = "cases";
 let lang = localStorage.getItem("muse-lang") || "zh";
 const LANGS = [["zh","中文"],["en","English"],["ja","日本語"],["ko","한국어"],["th","ไทย"],["vi","Tiếng Việt"],["id","Bahasa Indonesia"],["de","Deutsch"],["fr","Français"],["es","Español"],["pt","Português"]];
 let inviteLoaded = false;
-const OWNER_CODE = "JHB7ZS";
+const OWNER_CODE = "VF4N39";
 const RANDOM_COUNT = 9;   /* how many community codes to show per shuffle */
 let sampleCodes = [];      /* codes currently on screen */
 let sortMode = "new", onlyX = false, shown = 24, lastQ = "", inviteLeftOnly = false;
@@ -543,7 +543,7 @@ const STR = {
     heroLabel: "APPSTOY · MUSE 真实玩家案例",
     heroTitle: "Muse 实战案例库",
     countPhrase: "个真实高价值玩法",
-    heroInvite: "邀请码 JHB7ZS", heroCopied: "已复制 ✓",
+    heroInvite: "邀请码 VF4N39", heroCopied: "已复制 ✓",
     heroSide: "Issues 投稿玩法 · 互助邀请码",
     tabCases: "💡 案例库", tabInvite: "🎁 邀请码互助",
     inviteTitle: "🎁 邀请码互助区",
@@ -566,7 +566,7 @@ const STR = {
     submitBtn: "提交邀请码",
     submitBad: "邀请码格式不对，请输入 4–12 位字母或数字。",
     communityEmpty: "社区还没人上传邀请码，你可以做第一个 👆",
-    fCodePh: "例：JHB7ZS（4–12 位字母或数字）", fTotalPh: "例：10", fIntroPh: "例：独立开发者，Muse 重度用户，欢迎交流玩法",
+    fCodePh: "例：VF4N39（4–12 位字母或数字）", fTotalPh: "例：10", fIntroPh: "例：独立开发者，Muse 重度用户，欢迎交流玩法",
     submitBusy: "正在提交…",
     communityEmpty: "社区还没人上传邀请码，你可以做第一个 👆",
     randomNote: n => "从社区邀请码中随机展示 {n} 个".replace("{n}", n),
@@ -595,7 +595,7 @@ const STR = {
     heroLabel: "APPSTOY · REAL MUSE USER CASES",
     heroTitle: "Muse Use Cases",
     countPhrase: "real high-value playbooks",
-    heroInvite: "Invite code JHB7ZS", heroCopied: "Copied ✓",
+    heroInvite: "Invite code VF4N39", heroCopied: "Copied ✓",
     heroSide: "Share playbooks & invite codes in Issues",
     tabCases: "💡 Cases", tabInvite: "🎁 Invite codes",
     inviteTitle: "🎁 Community invite codes",
@@ -618,7 +618,7 @@ const STR = {
     submitBtn: "Submit invite code",
     submitBad: "Invalid code — use 4–12 letters or digits.",
     communityEmpty: "No community codes yet — be the first 👆",
-    fCodePh: "e.g. JHB7ZS (4–12 letters or digits)", fTotalPh: "e.g. 10", fIntroPh: "e.g. Indie dev, heavy Muse user, happy to swap tips",
+    fCodePh: "e.g. VF4N39 (4–12 letters or digits)", fTotalPh: "e.g. 10", fIntroPh: "e.g. Indie dev, heavy Muse user, happy to swap tips",
     submitBusy: "Submitting…",
     communityEmpty: "No community codes yet — be the first 👆",
     randomNote: n => "Showing {n} random community codes".replace("{n}", n),
@@ -647,7 +647,7 @@ const STR = {
     heroLabel: "APPSTOY · MUSE 実ユーザー事例",
     heroTitle: "Muse 活用事例集",
     countPhrase: "件のリアルな高価値プレイブック",
-    heroInvite: "招待コード JHB7ZS", heroCopied: "コピーしました ✓",
+    heroInvite: "招待コード VF4N39", heroCopied: "コピーしました ✓",
     heroSide: "Issuesで活用法・招待コードをシェア",
     tabCases: "💡 ケース集", tabInvite: "🎁 招待コード",
     inviteTitle: "🎁 招待コード共有エリア",
@@ -670,7 +670,7 @@ const STR = {
     submitBtn: "招待コードを送信",
     submitBad: "形式が正しくありません（英数字 4〜12 文字）。",
     communityEmpty: "まだコミュニティのコードがありません。最初の一人になりましょう 👆",
-    fCodePh: "例：JHB7ZS（英数字 4〜12 文字）", fTotalPh: "例：10", fIntroPh: "例：個人開発者。Muse ヘビーユーザーです",
+    fCodePh: "例：VF4N39（英数字 4〜12 文字）", fTotalPh: "例：10", fIntroPh: "例：個人開発者。Muse ヘビーユーザーです",
     submitBusy: "送信中…",
     communityEmpty: "まだコミュニティのコードがありません。最初の一人になりましょう 👆",
     randomNote: n => "コミュニティコードから {n} 件をランダム表示".replace("{n}", n),
@@ -699,7 +699,7 @@ const STR = {
     heroLabel: "APPSTOY · MUSE 실제 사용자 사례",
     heroTitle: "Muse 활용 사례집",
     countPhrase: "개의 실제 고가치 플레이북",
-    heroInvite: "초대 코드 JHB7ZS", heroCopied: "복사됨 ✓",
+    heroInvite: "초대 코드 VF4N39", heroCopied: "복사됨 ✓",
     heroSide: "Issues에서 활용법·초대 코드 공유",
     tabCases: "💡 사례집", tabInvite: "🎁 초대 코드",
     inviteTitle: "🎁 초대 코드 공유 공간",
@@ -722,7 +722,7 @@ const STR = {
     submitBtn: "초대 코드 제출",
     submitBad: "형식이 올바르지 않습니다 (영문/숫자 4–12자).",
     communityEmpty: "아직 커뮤니티 코드가 없습니다. 첫 번째가 되어 보세요 👆",
-    fCodePh: "예: JHB7ZS (영문/숫자 4–12자)", fTotalPh: "예: 10", fIntroPh: "예: 인디 개발자, Muse 헤비 유저",
+    fCodePh: "예: VF4N39 (영문/숫자 4–12자)", fTotalPh: "예: 10", fIntroPh: "예: 인디 개발자, Muse 헤비 유저",
     submitBusy: "제출 중…",
     communityEmpty: "아직 커뮤니티 코드가 없습니다. 첫 번째가 되어 보세요 👆",
     randomNote: n => "커뮤니티 코드 중 {n}개 무작위 표시".replace("{n}", n),
@@ -751,7 +751,7 @@ const STR = {
     heroLabel: "APPSTOY · เคสผู้ใช้ Muse จริง",
     heroTitle: "คลังเคสการใช้งาน Muse",
     countPhrase: "เพลย์บุ๊กมูลค่าสูงจากผู้ใช้จริง",
-    heroInvite: "รหัสเชิญ JHB7ZS", heroCopied: "คัดลอกแล้ว ✓",
+    heroInvite: "รหัสเชิญ VF4N39", heroCopied: "คัดลอกแล้ว ✓",
     heroSide: "แชร์วิธีใช้และรหัสเชิญใน Issues",
     tabCases: "💡 คลังเคส", tabInvite: "🎁 รหัสเชิญ",
     inviteTitle: "🎁 พื้นที่แบ่งปันรหัสเชิญ",
@@ -774,7 +774,7 @@ const STR = {
     submitBtn: "ส่งรหัสเชิญ",
     submitBad: "รูปแบบไม่ถูกต้อง ใช้ตัวอักษร/ตัวเลข 4–12 ตัว",
     communityEmpty: "ยังไม่มีรหัสจากชุมชน มาเป็นคนแรกกัน 👆",
-    fCodePh: "เช่น JHB7ZS (ตัวอักษร/ตัวเลข 4–12 ตัว)", fTotalPh: "เช่น 10", fIntroPh: "เช่น นักพัฒนาอิสระ ใช้ Muse เป็นประจำ",
+    fCodePh: "เช่น VF4N39 (ตัวอักษร/ตัวเลข 4–12 ตัว)", fTotalPh: "เช่น 10", fIntroPh: "เช่น นักพัฒนาอิสระ ใช้ Muse เป็นประจำ",
     submitBusy: "กำลังส่ง…",
     communityEmpty: "ยังไม่มีรหัสจากชุมชน มาเป็นคนแรกกัน 👆",
     randomNote: n => "สุ่มแสดง {n} รหัสจากชุมชน".replace("{n}", n),
@@ -803,7 +803,7 @@ const STR = {
     heroLabel: "APPSTOY · CASE NGƯỜI DÙNG THẬT",
     heroTitle: "Thư viện case dùng Muse",
     countPhrase: "playbook giá trị cao từ người dùng thật",
-    heroInvite: "Mã mời JHB7ZS", heroCopied: "Đã sao chép ✓",
+    heroInvite: "Mã mời VF4N39", heroCopied: "Đã sao chép ✓",
     heroSide: "Chia sẻ cách dùng & mã mời trong Issues",
     tabCases: "💡 Thư viện case", tabInvite: "🎁 Mã mời",
     inviteTitle: "🎁 Khu vực chia sẻ mã mời",
@@ -826,7 +826,7 @@ const STR = {
     submitBtn: "Gửi mã mời",
     submitBad: "Mã không hợp lệ — cần 4–12 chữ hoặc số.",
     communityEmpty: "Chưa có mã nào từ cộng đồng — hãy là người đầu tiên 👆",
-    fCodePh: "VD: JHB7ZS (4–12 chữ hoặc số)", fTotalPh: "VD: 10", fIntroPh: "VD: Dev độc lập, dùng Muse thường xuyên",
+    fCodePh: "VD: VF4N39 (4–12 chữ hoặc số)", fTotalPh: "VD: 10", fIntroPh: "VD: Dev độc lập, dùng Muse thường xuyên",
     submitBusy: "Đang gửi…",
     communityEmpty: "Chưa có mã nào từ cộng đồng — hãy là người đầu tiên 👆",
     randomNote: n => "Hiển thị ngẫu nhiên {n} mã cộng đồng".replace("{n}", n),
@@ -855,7 +855,7 @@ const STR = {
     heroLabel: "APPSTOY · KASUS PENGGUNA ASLI",
     heroTitle: "Kumpulan Kasus Muse",
     countPhrase: "playbook bernilai tinggi dari pengguna asli",
-    heroInvite: "Kode undangan JHB7ZS", heroCopied: "Tersalin ✓",
+    heroInvite: "Kode undangan VF4N39", heroCopied: "Tersalin ✓",
     heroSide: "Bagikan cara pakai & kode undangan di Issues",
     tabCases: "💡 Kumpulan Kasus", tabInvite: "🎁 Kode Undangan",
     inviteTitle: "🎁 Area berbagi kode undangan",
@@ -878,7 +878,7 @@ const STR = {
     submitBtn: "Kirim kode undangan",
     submitBad: "Kode tidak valid — pakai 4–12 huruf atau angka.",
     communityEmpty: "Belum ada kode komunitas — jadilah yang pertama 👆",
-    fCodePh: "mis. JHB7ZS (4–12 huruf/angka)", fTotalPh: "mis. 10", fIntroPh: "mis. Developer indie, pengguna Muse harian",
+    fCodePh: "mis. VF4N39 (4–12 huruf/angka)", fTotalPh: "mis. 10", fIntroPh: "mis. Developer indie, pengguna Muse harian",
     submitBusy: "Mengirim…",
     communityEmpty: "Belum ada kode komunitas — jadilah yang pertama 👆",
     randomNote: n => "Menampilkan {n} kode komunitas acak".replace("{n}", n),
@@ -907,7 +907,7 @@ const STR = {
     heroLabel: "APPSTOY · ECHTE NUTZERFÄLLE",
     heroTitle: "Muse Anwendungsfälle",
     countPhrase: "echte hochwertige Playbooks",
-    heroInvite: "Einladungscode JHB7ZS", heroCopied: "Kopiert ✓",
+    heroInvite: "Einladungscode VF4N39", heroCopied: "Kopiert ✓",
     heroSide: "Anwendungsfälle & Einladungscodes in Issues teilen",
     tabCases: "💡 Fälle", tabInvite: "🎁 Einladungscodes",
     inviteTitle: "🎁 Einladungscodes der Community",
@@ -930,7 +930,7 @@ const STR = {
     submitBtn: "Einladungscode senden",
     submitBad: "Ungültiges Format — 4–12 Buchstaben oder Ziffern.",
     communityEmpty: "Noch keine Community-Codes – sei der Erste 👆",
-    fCodePh: "z. B. JHB7ZS (4–12 Buchstaben/Ziffern)", fTotalPh: "z. B. 10", fIntroPh: "z. B. Indie-Dev, intensiver Muse-Nutzer",
+    fCodePh: "z. B. VF4N39 (4–12 Buchstaben/Ziffern)", fTotalPh: "z. B. 10", fIntroPh: "z. B. Indie-Dev, intensiver Muse-Nutzer",
     submitBusy: "Wird gesendet…",
     communityEmpty: "Noch keine Community-Codes – sei der Erste 👆",
     randomNote: n => "{n} zufällige Community-Codes".replace("{n}", n),
@@ -959,7 +959,7 @@ const STR = {
     heroLabel: "APPSTOY · VRAIS CAS D'UTILISATEURS",
     heroTitle: "Cas d'usage Muse",
     countPhrase: "playbooks à haute valeur ajoutée",
-    heroInvite: "Code d'invitation JHB7ZS", heroCopied: "Copié ✓",
+    heroInvite: "Code d'invitation VF4N39", heroCopied: "Copié ✓",
     heroSide: "Partager cas d'usage et codes dans Issues",
     tabCases: "💡 Cas d'usage", tabInvite: "🎁 Codes d'invitation",
     inviteTitle: "🎁 Codes d'invitation communautaires",
@@ -982,7 +982,7 @@ const STR = {
     submitBtn: "Envoyer le code",
     submitBad: "Format invalide — 4 à 12 lettres ou chiffres.",
     communityEmpty: "Aucun code communautaire pour l’instant — soyez le premier 👆",
-    fCodePh: "ex. JHB7ZS (4–12 lettres/chiffres)", fTotalPh: "ex. 10", fIntroPh: "ex. Dev indépendant, utilisateur intensif de Muse",
+    fCodePh: "ex. VF4N39 (4–12 lettres/chiffres)", fTotalPh: "ex. 10", fIntroPh: "ex. Dev indépendant, utilisateur intensif de Muse",
     submitBusy: "Envoi…",
     communityEmpty: "Aucun code communautaire pour l’instant — soyez le premier 👆",
     randomNote: n => "{n} codes communautaires au hasard".replace("{n}", n),
@@ -1011,7 +1011,7 @@ const STR = {
     heroLabel: "APPSTOY · CASOS REALES DE USUARIOS",
     heroTitle: "Casos de uso de Muse",
     countPhrase: "playbooks reales de alto valor",
-    heroInvite: "Código de invitación JHB7ZS", heroCopied: "Copiado ✓",
+    heroInvite: "Código de invitación VF4N39", heroCopied: "Copiado ✓",
     heroSide: "Compartir casos y códigos en Issues",
     tabCases: "💡 Casos", tabInvite: "🎁 Códigos de invitación",
     inviteTitle: "🎁 Códigos de invitación de la comunidad",
@@ -1034,7 +1034,7 @@ const STR = {
     submitBtn: "Enviar código",
     submitBad: "Formato no válido: 4–12 letras o números.",
     communityEmpty: "Aún no hay códigos de la comunidad: ¡sé el primero 👆",
-    fCodePh: "p. ej. JHB7ZS (4–12 letras o números)", fTotalPh: "p. ej. 10", fIntroPh: "p. ej. Dev independiente, usuario intensivo de Muse",
+    fCodePh: "p. ej. VF4N39 (4–12 letras o números)", fTotalPh: "p. ej. 10", fIntroPh: "p. ej. Dev independiente, usuario intensivo de Muse",
     submitBusy: "Enviando…",
     communityEmpty: "Aún no hay códigos de la comunidad: ¡sé el primero 👆",
     randomNote: n => "Mostrando {n} códigos aleatorios".replace("{n}", n),
@@ -1063,7 +1063,7 @@ const STR = {
     heroLabel: "APPSTOY · CASOS REAIS DE USUÁRIOS",
     heroTitle: "Casos de uso do Muse",
     countPhrase: "playbooks reais de alto valor",
-    heroInvite: "Código de convite JHB7ZS", heroCopied: "Copiado ✓",
+    heroInvite: "Código de convite VF4N39", heroCopied: "Copiado ✓",
     heroSide: "Compartilhar casos e códigos nas Issues",
     tabCases: "💡 Casos", tabInvite: "🎁 Códigos de convite",
     inviteTitle: "🎁 Códigos de convite da comunidade",
@@ -1086,7 +1086,7 @@ const STR = {
     submitBtn: "Enviar código",
     submitBad: "Formato inválido — 4 a 12 letras ou números.",
     communityEmpty: "Ainda não há códigos da comunidade — seja o primeiro 👆",
-    fCodePh: "ex. JHB7ZS (4–12 letras ou números)", fTotalPh: "ex. 10", fIntroPh: "ex. Dev independente, usuário intenso do Muse",
+    fCodePh: "ex. VF4N39 (4–12 letras ou números)", fTotalPh: "ex. 10", fIntroPh: "ex. Dev independente, usuário intenso do Muse",
     submitBusy: "Enviando…",
     communityEmpty: "Ainda não há códigos da comunidade — seja o primeiro 👆",
     randomNote: n => "Exibindo {n} códigos aleatórios".replace("{n}", n),
@@ -1491,14 +1491,29 @@ function loadInvites(){
   if (inviteLoaded) return;
   inviteLoaded = true;
   $("#inviteGrid").innerHTML = '<div class="empty">' + T().inviteLoading + '</div>';
-  fetch(ISSUES_API, { cache: "no-store" }).then(function(r){ return r.json(); }).then(function(list){
-    INVITES = (Array.isArray(list) ? list : [])
+  /* GitHub caps per_page at 100, so keep following the Link: rel="next" header
+     until it runs out. Without this, once the repo passes 100 invite issues the
+     newest submissions would silently stop appearing on the page. */
+  function fetchAllIssues(url, acc){
+    return fetch(url, { cache: "no-store" }).then(function(r){
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      const link = r.headers.get("Link") || "";
+      const next = link.match(/<([^>]+)>;\s*rel="next"/);
+      return r.json().then(function(batch){
+        const merged = acc.concat(Array.isArray(batch) ? batch : []);
+        return next ? fetchAllIssues(next[1], merged) : merged;
+      });
+    });
+  }
+
+  fetchAllIssues(ISSUES_API, []).then(function(list){
+    INVITES = list
       .filter(function(i){ return !i.pull_request; })
       .map(parseInvite);
     renderInvites(true);
   }).catch(function(){
     $("#inviteGrid").innerHTML = '<div class="empty">' + T().inviteFail + '</div>';
-    });
+  });
 }
 
 
