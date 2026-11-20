@@ -5,7 +5,7 @@
 > A curated collection of real, high-value ways people use **Muse**, Meta's personal AI agent.
 > Inclusion rule: **real user shares from X, Reddit, Instagram, Facebook, and Threads** — we prioritize cases with clear results, real numbers, and high replicability.
 
-📊 **451 cases** ｜ 🕐 **Last updated: 2026-11-20** ｜ 🔀 Content synced from upstream ｜ 🌐 **Live site (Chinese/English): https://appstoy.github.io/muse-use-cases/**
+📊 **474 cases** ｜ 🕐 **Last updated: 2026-11-21** ｜ 🔀 Content synced from upstream ｜ 🌐 **Live site (Chinese/English): https://appstoy.github.io/muse-use-cases/**
 
 ---
 
