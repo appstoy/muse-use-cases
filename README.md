@@ -5,7 +5,7 @@
 > Meta 个人 AI 智能体 **Muse** 的真实高价值玩法合集。
 > 收录标准：**收录 X / Reddit / Instagram / Facebook / Threads 上的真实用户分享**，优先收录结果明确、有数字、可复制的案例。
 
-📊 **收录案例：497** ｜ 🕐 **最后更新：2026-11-22** ｜ 🔀 内容同步上游仓库 ｜ 🌐 **在线预览站（支持中英双语）：https://appstoy.github.io/muse-use-cases/**
+📊 **收录案例：512** ｜ 🕐 **最后更新：2026-11-23** ｜ 🔀 内容同步上游仓库 ｜ 🌐 **在线预览站（支持中英双语）：https://appstoy.github.io/muse-use-cases/**
 
 ---
 
